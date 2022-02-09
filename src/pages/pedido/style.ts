@@ -9,6 +9,11 @@ export const ContainerPedido = styled.div`
 `;
 
 export const Card = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas: "title title" "body body" "ancor ancor";
+    grid-row-gap: 15px;
     margin: 20px;
     text-align: center;
     border: brown solid 2px;
@@ -18,37 +23,36 @@ export const Card = styled.div`
 `;
 
 export const CardTitle = styled.div`
-    background-color: red;
+    grid-area: title;
+    background-color: red;    
     text-align: center;
-    margin-bottom: 15px;
-    height: 30px;
     color: white;
     font-size: 20px;
     padding-top: 3px;
 `
 
-export const CardInputGroup = styled.div`
-    > input {
+export const CardBody = styled.div`
+    grid-area: body;
+    > form > input {
         border: gray solid 1px;
         border-radius: 3px;
         padding: 4px;
     }
-    > label {
+    > form > label {
         text-align: none;
     }
     text-align: center;
 `
 
-export const CardButton = styled.div`
-    margin-top: 15px;
+export const CardFooter = styled.div`
+    grid-area: ancor;
     text-align: center;
-    height: 30px;
 `
 
 export const Button = styled.button` 
-    background-color: #4CAF50;
     width: 100%;
     height: 100%;
+    background-color: #4CAF50;
     border: none;
     color: white;
     text-decoration: none;
