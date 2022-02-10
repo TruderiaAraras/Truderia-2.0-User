@@ -50,6 +50,13 @@ export const PagePedido: React.FC = () => {
         </CardTitle>
         <CardBody>Algo</CardBody>
       </Card>
+      <Card>
+        <CardTitle>Mario</CardTitle>
+        <CardBody>
+          TESTE
+          <CardFooter><Button>Teste</Button></CardFooter>
+        </CardBody>        
+      </Card>
     </ContainerPedido>
   );
 };
