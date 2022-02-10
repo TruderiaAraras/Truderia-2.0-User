@@ -39,7 +39,9 @@ export const Logo = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
+  width: 90%;
+  flex: 2;
+  margin: 20px 0 30px;
 `;
 
 export const Footer = styled.div`
@@ -112,14 +114,8 @@ export const IconFacebook = styled.div`
   background-position: center;
 `;
 
-export const ViewCategory = styled.div`
-
-`;
-
 export const IconArrow = styled.img`
-
-`;
-
-export const TitleCategory = styled.h3`
-
+  width: 30px;
+  height: 30px;
+  color: ${({ theme }) => theme.color.ORANGE_LIGHTER};
 `;
