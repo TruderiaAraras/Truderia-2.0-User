@@ -1,19 +1,37 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface CardProps {
+    noFooter?: boolean
+}
+
+const RobotoFont = css`
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+`
 
 export const ContainerPedido = styled.div`
+    ${RobotoFont}
     width: 100vw;
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: space-between;            
+    justify-content: space-between;
 `;
 
-export const Card = styled.div`
+const withoutFooter = {
+    row: '40px 2fr',
+    area: `"title title" "body body"`
+};
+const withFooter = {
+    row: '40px 2fr 40px',
+    area: `"title title" "body body" "ancor ancor"`
+};
+
+export const Card = styled.div<CardProps>`
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 40px 2fr;
-    grid-template-areas: "title title" "body body";
-    margin: 20px;
+    grid-template-rows: ${props => props.noFooter ? withoutFooter.row : withFooter.row};
+    grid-template-areas: ${props => props.noFooter ? withoutFooter.area : withFooter.area};
+    margin: 10px;
     text-align: center;
     border: gray solid 1px;
     border-radius: 10px;
@@ -23,13 +41,13 @@ export const Card = styled.div`
 
 export const CardTitle = styled.div`
     grid-area: title;
-    background-color: rgb(51, 17, 17);    
+    background-color: #3a1212;    
     text-align: center;
     color: white;
     font-size: 20px;
     height: auto;
     padding-top: 10px;    
-`
+`;
 
 export const CardBody = styled.div`
     grid-area: body;    
@@ -40,17 +58,17 @@ export const CardFooter = styled.div`
     grid-area: ancor;
     height: 40px;
     text-align: center;
-`
+`;
 
 export const Button = styled.button` 
     width: 100%;
     height: 100%;
-    background-color: #4CAF50;
+    background-color: #02a802;
     border: none;
     color: white;
     text-decoration: none;
     font-size: 20px;
-`
+`;
 
 export const Form = styled.form`
     > input {
@@ -66,18 +84,23 @@ export const Form = styled.form`
         text-align: none;
         align-self: start;
         margin-bottom: 4px;
+        font-size: 16px;
     }
     margin-top: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-`
+`;
 
 export const Table = styled.table`
+    .trash-icon {
+        color: red;
+        font-size: 22px;
+    }
     td {
-        color: red; 
+        color: black; 
         padding: 10px;
     }
     align-items: center;
     width: 100%;
-`
+`;
