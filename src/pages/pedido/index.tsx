@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerPedido, Card, CardTitle, Button, CardFooter, CardBody } from "./style";
+import { ContainerPedido, Card, CardTitle, Button, CardFooter, CardBody, Form, Table } from "./style";
 import { useFormik } from "formik";
 
 export const PagePedido: React.FC = () => {
@@ -16,19 +16,39 @@ export const PagePedido: React.FC = () => {
   return (
     <ContainerPedido>
       <Card>
-        <CardTitle>Título</CardTitle>
+        <CardTitle>Carrinho</CardTitle>
         <CardBody>
-            <form id="myForm" onSubmit={formik.handleSubmit}>
+          <Table>            
+            <tr>
+              <td>1x</td>
+              <td>Trudel</td>
+              <td>Brigadeiro</td>
+              <td>R$ 12,00</td>
+              <td></td>
+            </tr>
+          </Table>
+        <CardFooter>
+          <Button onClick={() => alert('Chamar outra Página')} >Enviar</Button>
+        </CardFooter>
+        </CardBody>
+      </Card>
+      <Card>
+        <CardTitle>Dados</CardTitle>
+        <CardBody>
+            <Form id="myForm" onSubmit={formik.handleSubmit}>
               <label id="nome">Nome: </label>
               <input id="nome" name="nome" placeholder="Isaque Schuwarte" />
               <hr />
               <label id="celular">Celular: </label>
               <input id="celular" name="celular" placeholder="(99) 99999-9999" />
-            </form>
+            </Form>
         </CardBody>
-        <CardFooter>
-          <Button onClick={() => alert('Deveria Acionar o FormSubmit')} >Enviar</Button>
-        </CardFooter>
+      </Card>
+      <Card>
+        <CardTitle>
+          Junior
+        </CardTitle>
+        <CardBody>Algo</CardBody>
       </Card>
     </ContainerPedido>
   );

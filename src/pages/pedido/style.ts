@@ -11,41 +11,34 @@ export const ContainerPedido = styled.div`
 export const Card = styled.div`
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-template-areas: "title title" "body body" "ancor ancor";
-    grid-row-gap: 15px;
+    grid-template-rows: 40px 2fr;
+    grid-template-areas: "title title" "body body";
     margin: 20px;
     text-align: center;
-    border: brown solid 2px;
-    border-radius: 5px;
+    border: gray solid 1px;
+    border-radius: 10px;
     overflow: hidden;
     justify-content: space-between;
 `;
 
 export const CardTitle = styled.div`
     grid-area: title;
-    background-color: red;    
+    background-color: rgb(51, 17, 17);    
     text-align: center;
     color: white;
     font-size: 20px;
-    padding-top: 3px;
+    height: auto;
+    padding-top: 10px;    
 `
 
 export const CardBody = styled.div`
-    grid-area: body;
-    > form > input {
-        border: gray solid 1px;
-        border-radius: 3px;
-        padding: 4px;
-    }
-    > form > label {
-        text-align: none;
-    }
+    grid-area: body;    
     text-align: center;
 `
 
 export const CardFooter = styled.div`
     grid-area: ancor;
+    height: 40px;
     text-align: center;
 `
 
@@ -56,5 +49,35 @@ export const Button = styled.button`
     border: none;
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
+`
+
+export const Form = styled.form`
+    > input {
+        border: gray solid 1px;
+        border-radius: 6px;
+        padding: 8px;
+        width: 70%;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    > label {
+        margin-left: 20px;
+        text-align: none;
+        align-self: start;
+        margin-bottom: 4px;
+    }
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const Table = styled.table`
+    td {
+        color: red; 
+        padding: 10px;
+    }
+    align-items: center;
+    width: 100%;
 `
