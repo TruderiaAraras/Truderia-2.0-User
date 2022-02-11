@@ -14,40 +14,42 @@ import {
   PriceMini,
   Button,
   ButtonTitle,
-  Separator
+  Separator,
 } from "./style";
 
-interface Props {
-  data?: {
-    title: string;
-    description: string;
-    photo: string;
-    price: number;
-    miniPrice: number;
-  }
+export interface CardProductProps {
+  flavour: string;
+  description: string;
+  photo: string;
+  price: number;
+  miniPrice: number;
 }
 
-export const CardProduct: React.FC<Props> = ({data}) => {
+interface Props {
+  data?: CardProductProps;
+}
+
+export const CardProduct: React.FC<Props> = ({ data }) => {
   return (
     <>
       <Container>
         <WrapperPhoto>
-          <Photo src="https://github.com/joaovictormartin.png" />
+          <Photo src={data?.photo} />
         </WrapperPhoto>
 
         <WrapperContent>
           <TopView>
-            <Title>TRUDELTTONE</Title>
-            <Description>Nossa deliciosa e exclusiva massa romena, com um recheio muito especial de Natal: brigadeiro branco sabor panetone e frutas cristalizadas!</Description>
+            <Title>{data?.flavour}</Title>
+            <Description>{data?.description}</Description>
           </TopView>
 
           <BottomView>
             <WrapperPrice>
-              <Price><span>R$</span>16,00</Price>
+              <Price>
+                <span>R$</span>{data?.price}
+              </Price>
 
-              {!data?.miniPrice && (
-                <PriceMini>Mini 12,00</PriceMini>
-              )}
+              {data?.miniPrice && <PriceMini>{`Mini ${data?.miniPrice}`}</PriceMini>}
             </WrapperPrice>
 
             <Button>
@@ -56,7 +58,7 @@ export const CardProduct: React.FC<Props> = ({data}) => {
           </BottomView>
         </WrapperContent>
       </Container>
-      <Separator/>
+      <Separator />
     </>
   );
 };

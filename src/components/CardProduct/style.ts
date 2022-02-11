@@ -17,7 +17,7 @@ export const WrapperPhoto = styled.div`
 `;
 
 export const Photo = styled.img`
-  width: 146px;
+  width: 140px;
   height: 96px;
   object-fit: cover;
   border-radius: 15px;
