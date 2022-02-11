@@ -2,8 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 
 import {
-  customSizeStyles,
-  customTimeStyles,
+  //customSizeStyles,
+  //customTimeStyles,
   Content,
   Title,
   Buttons,

@@ -65,6 +65,7 @@ export const ButtonSocial = styled.button`
   color: ${({ theme }) => theme.color.PRIMARY};
   background-color: ${({ theme }) => theme.color.SHAPE};;
   cursor: pointer;
+  font-size: 13px;
 
   margin-bottom: 10px;
 `;
@@ -81,6 +82,7 @@ export const Button = styled(Link)`
   color: ${({ theme }) => theme.color.PRIMARY};
   background-color: ${({ theme }) => theme.color.SHAPE};;
   cursor: pointer;
+  font-size: 13px;
   text-align: center;
 `;
 

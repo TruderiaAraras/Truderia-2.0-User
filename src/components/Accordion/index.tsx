@@ -7,7 +7,7 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 
-import { CardProduct, CardProductProps } from "../../components/CardProduct";
+import { CardProduct } from "../../components/CardProduct";
 
 import "./style.css";
 
@@ -25,8 +25,8 @@ export const NewAccordion: React.FC<Props> = ({ title, item }) => {
         </AccordionItemHeading>
 
         <AccordionItemPanel>
-          {item.map((iten: any) => (
-            <CardProduct data={iten} />
+          {item.map((iten: any, index: number) => (
+            <CardProduct key={index} data={iten} />
           ))}
         </AccordionItemPanel>
       </AccordionItem>

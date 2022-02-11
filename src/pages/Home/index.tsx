@@ -22,9 +22,9 @@ import {
 export const Home: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  // function openModal() {
+  //   setIsOpen(true);
+  // }
 
   function closeModal() {
     setIsOpen(false);
