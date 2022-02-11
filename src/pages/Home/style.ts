@@ -17,7 +17,8 @@ export const Container = styled.div`
 
   background-image: url(${menuBackground});
   background-size: cover;
-  background-position: center;
+  overflow: scroll;
+
 `;
 
 export const Header = styled.div`
@@ -26,6 +27,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 32px;
 `;
 
 export const Logo = styled.div`
@@ -39,8 +41,7 @@ export const Logo = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 90%;
-  flex: 2;
+  width: 95%;
   margin: 20px 0 30px;
 `;
 

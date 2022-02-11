@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import { CardProduct } from '../../components/CardProduct'
-import { NewModal } from '../../components/Modal'
+import { menuView } from "../../database/data";
+import { NewAccordion } from "../../components/Accordion";
+import { NewModal } from "../../components/Modal";
 
 import {
   Container,
@@ -19,7 +20,7 @@ import {
 } from "./style";
 
 export const Home: React.FC = () => {
-  const [modalIsOpen, setIsOpen] = useState(true);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -33,13 +34,14 @@ export const Home: React.FC = () => {
     <>
       <Container>
         <Header>
-          <Logo/>
+          <Logo />
         </Header>
 
         <Content>
-          <CardProduct/>
-          <CardProduct/>
-          <CardProduct/>
+          {menuView.map(({category,  name: categoryName, items: categoryItems}) => (
+            <NewAccordion key={category} title={categoryName} item={categoryItems} />
+          ))}
+          <div/>
         </Content>
 
         <Footer>
@@ -62,11 +64,7 @@ export const Home: React.FC = () => {
         </Footer>
       </Container>
 
-      <NewModal
-        type="time"
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-      />
+      <NewModal type="time" isOpen={modalIsOpen} onRequestClose={closeModal} />
     </>
   );
 };
