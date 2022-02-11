@@ -10,12 +10,46 @@ const RobotoFont = css`
 
 export const ContainerPedido = styled.div`
     ${RobotoFont}
+    background-color: whitesmoke;
     width: 100vw;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: space-between;
 `;
+
+export const Header = styled.header`
+    .go-forward {
+        padding-top: 3px;
+        padding-right: 3px;
+        width: 10%;
+        align-self: flex-start;
+    }
+    .go-back {
+        button {
+            background-color: red;
+            color: white;
+            padding: 2px;
+            border: red solid 1px;
+            border-radius: 5px;
+        }
+        padding-top: 8px;
+        width: 10%;
+        align-self: flex-start;
+    }
+    .titulo {
+        width: 80%;
+        align-self: center;
+        font-size: 25px;
+    }    
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #3a1212;
+    height: 60px;
+    color: white;
+    margin-bottom: 10px;
+`
 
 const withoutFooter = {
     row: '40px 2fr',
@@ -27,6 +61,7 @@ const withFooter = {
 };
 
 export const Card = styled.div<CardProps>`
+    box-shadow: 5px 5px 30px gray;
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: ${props => props.noFooter ? withoutFooter.row : withFooter.row};
@@ -40,13 +75,17 @@ export const Card = styled.div<CardProps>`
 `;
 
 export const CardTitle = styled.div`
-    grid-area: title;
-    background-color: #3a1212;    
+    div {
+        align-self: center;
+    }
+    display: flex;
+    justify-content: center;
     text-align: center;
+    grid-area: title;
+    background-color: #3a1212;
+    height: 100%;
     color: white;
     font-size: 20px;
-    height: auto;
-    padding-top: 10px;    
 `;
 
 export const CardBody = styled.div`
@@ -101,6 +140,7 @@ export const Dropdown = styled.div`
         font-size: 16px;
     }
     > select {
+        background-color: whitesmoke;
         border: gray solid 1px;
         border-radius: 6px;
         padding: 8px;
@@ -121,9 +161,11 @@ export const Table = styled.table`
     }
     td {
         color: black; 
+        padding: 8px;
+    }
+    th {
         padding: 10px;
     }
-    margin: 6px;
     align-items: center;
     width: 100%;
 `;
@@ -167,4 +209,17 @@ export const Withdraw = styled.div`
         width: 70px;
         height: 70px;
     }
+`
+
+export const Footer = styled.footer`
+    div {
+        align-self: center;
+    }
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #02a802;
+    height: 60px;
+    color: white;
+    margin-top: 10px;
 `

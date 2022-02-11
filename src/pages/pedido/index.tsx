@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   ContainerPedido,
   Card,
@@ -12,46 +12,24 @@ import {
   Delivery,
   Images,
   Dropdown,
+  Header,
+  Footer
 } from "./style";
 import { useFormik } from "formik";
+import { MdOutlineDeliveryDining } from "react-icons/md";
+import { BsArrowLeftCircle } from "react-icons/bs";
 import { CgTrash } from "react-icons/cg";
+import { TiArrowForwardOutline } from "react-icons/ti";
+import { AiOutlineWhatsApp, AiFillProfile } from "react-icons/ai";
+import { RiShoppingCartLine } from "react-icons/ri";
+import { FaRegCreditCard } from "react-icons/fa";
 import retiradaImg from "../../assets/Menu/Delivery/food-withdraw.png";
 import entregaImg from "../../assets/Menu/Delivery/food-delivery.png";
-
-let produtosArray = [
-  {
-    id: Math.random(),
-    quantidade: 1,
-    preco: 12.0,
-    categoria: "Trudel",
-    sabor: "Coca-Cola",
-  },
-  {
-    id: Math.random(),
-    quantidade: 1,
-    preco: 12.0,
-    categoria: "Trudel 2",
-    sabor: "Coca-Cola",
-  },
-  {
-    id: Math.random(),
-    quantidade: 1,
-    preco: 12.0,
-    categoria: "Trudel 3",
-    sabor: "Coca-Cola",
-  },
-  {
-    id: Math.random(),
-    quantidade: 1,
-    preco: 12.0,
-    categoria: "Trudel 6",
-    sabor: "Coca-Cola",
-  },
-];
+import produtosArray from "./produtos.json";
 
 export const PagePedido: React.FC = () => {
-  const [produtos, setProdutos] = useState([...produtosArray]);
-  const [subtotal, setSubtotal] = useState(0);
+  const [produtos, setProdutos] = useState([...produtosArray.produtos]);
+  const [taxa, setTaxa] = useState(0);
 
   const formik = useFormik({
     initialValues: {
@@ -78,18 +56,36 @@ export const PagePedido: React.FC = () => {
     return valorEmReal;
   }
 
-  function totalValue() {
+  function subTotal() {
     let valorTotal = 0;
-    produtos.map(prod => {
-      valorTotal += (prod.preco * prod.quantidade);
+    produtos.map((prod) => {
+      valorTotal += prod.preco * prod.quantidade;
+      return 0; // Para remover warning do React
     });
     return valorTotal;
   }
 
   return (
     <ContainerPedido>
+      <Header>
+        <div className="go-back">
+          <button><BsArrowLeftCircle /></button>
+        </div>
+        <div className="titulo">
+          Resumo do Pedido
+        </div>
+        <div className="go-forward">
+        </div>
+      </Header>
       <Card noFooter={false}>
-        <CardTitle>Itens no Carrinho</CardTitle>
+        <CardTitle>
+          <div>
+            Itens no Carrinho
+          </div>
+          <div>
+            <RiShoppingCartLine style={{ marginLeft: '15px' }} />
+          </div>
+        </CardTitle>
         <CardBody>
           <Table>
             <thead>
@@ -125,7 +121,14 @@ export const PagePedido: React.FC = () => {
         </CardFooter>
       </Card>
       <Card noFooter>
-        <CardTitle>Dados</CardTitle>
+        <CardTitle>
+          <div>
+            Dados
+          </div>
+          <div>
+            <AiFillProfile style={{ marginLeft: '15px' }} />
+          </div>
+        </CardTitle> 
         <CardBody>
           <Form id="myForm" onSubmit={formik.handleSubmit}>
             <label id="nome">Nome: </label>
@@ -137,14 +140,21 @@ export const PagePedido: React.FC = () => {
         </CardBody>
       </Card>
       <Card noFooter>
-        <CardTitle>Forma de Recebimento</CardTitle>
+        <CardTitle> 
+          <div>
+            Forma de Recebimento
+          </div>
+          <div>
+            <MdOutlineDeliveryDining style={{ marginLeft: '15px' }} />
+          </div>
+        </CardTitle>
         <CardBody>
           <Images>
-            <Withdraw>
+            <Withdraw onClick={() => setTaxa(0)}>
               Retirada
               <img src={retiradaImg} alt="Retirada" />
             </Withdraw>
-            <Delivery>
+            <Delivery onClick={() => setTaxa(5)}>
               Entrega
               <img src={entregaImg} alt="Entrega" />
             </Delivery>
@@ -152,7 +162,14 @@ export const PagePedido: React.FC = () => {
         </CardBody>
       </Card>
       <Card noFooter>
-        <CardTitle>Pagamentos</CardTitle>
+        <CardTitle>
+          <div>            
+            Pagamentos 
+          </div>
+          <div>
+            <FaRegCreditCard style={{ marginLeft: '15px' }} />
+          </div>
+        </CardTitle>  
         <CardBody>
           <Dropdown>
             <label id="metodos">Meio de Pagamento:</label>
@@ -167,23 +184,67 @@ export const PagePedido: React.FC = () => {
         </CardBody>
       </Card>
       <Card noFooter={false}>
-        <CardTitle>Total</CardTitle>
+        <CardTitle>
+          <div>Total</div>
+        </CardTitle>
         <CardBody>
           <Table>
-            <thead>
-              <tr>
+            <thead style={{ width: "100%" }}>
+              <tr
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
                 <th>Subtotal</th>
-                <th>{totalValue()}</th>
+                <th>{convertToReal(subTotal())}</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              <tr
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <td>Taxa de Entrega</td>
+                <td>{ taxa > 0 ? convertToReal(taxa) : null }</td>
+              </tr>
+            </tbody>
           </Table>
         </CardBody>
         <CardFooter>
           <div style={{ width: "100%", borderTop: "gray solid 1px" }}>
+            <Table>
+              <thead style={{ width: "100%" }}>
+                <tr
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <th>Total</th>
+                  <th>{convertToReal(subTotal() + taxa)}</th>
+                </tr>
+              </thead>
+            </Table>
           </div>
         </CardFooter>
       </Card>
+      <Footer onClick={() => alert('Ir Para WhatsApp')}>
+        <div>
+          <AiOutlineWhatsApp style={{ fontSize: '35px', alignSelf: 'flex-end', marginRight: '20px' }} />
+        </div>
+        <div>
+          IR PARA WHATSAPP
+        </div>
+        <div>
+          <TiArrowForwardOutline style={{ alignSelf: 'flex-end', marginLeft: '5px' }} />
+        </div>
+      </Footer>
     </ContainerPedido>
   );
 };
