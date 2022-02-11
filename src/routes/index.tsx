@@ -1,16 +1,17 @@
 import React from 'react';
 import {
-  // HashRouter, // or //
   BrowserRouter,
   Routes,
   Route,
 } from 'react-router-dom';
-import { Home } from '../pages';
+
+import { Welcome, Home } from '../pages';
 
 const Router = (): React.ReactElement => (
   <BrowserRouter>
     <Routes>
-      <Route path="/Home" element={<Home />} />
+      <Route path="/" element={<Welcome />} />
+      <Route path="/home" element={<Home />} />
     </Routes>
   </BrowserRouter>
 );
