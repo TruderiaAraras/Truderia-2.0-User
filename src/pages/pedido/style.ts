@@ -50,7 +50,7 @@ export const CardTitle = styled.div`
 `;
 
 export const CardBody = styled.div`
-    grid-area: body;    
+    grid-area: body;
     text-align: center;
 `
 
@@ -92,6 +92,28 @@ export const Form = styled.form`
     align-items: center;
 `;
 
+export const Dropdown = styled.div`
+    > label {
+        margin-left: 20px;
+        text-align: none;
+        align-self: start;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    > select {
+        border: gray solid 1px;
+        border-radius: 6px;
+        padding: 8px;
+        width: 70%;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 export const Table = styled.table`
     .trash-icon {
         color: red;
@@ -101,6 +123,48 @@ export const Table = styled.table`
         color: black; 
         padding: 10px;
     }
+    margin: 6px;
     align-items: center;
     width: 100%;
 `;
+
+export const Images = styled.div`
+    display: flex;
+    justify-content: space-around;
+`
+
+export const Delivery = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100px;
+    height: 100px;
+    border: #dcdcdc solid 1px;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 8px;
+    box-shadow: 5px 5px 10px gray;
+    img {
+        align-self: center;
+        width: 70px;
+        height: 70px;
+    }
+`
+
+export const Withdraw = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100px;
+    height: 100px;
+    border: #dcdcdc solid 1px;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 8px;
+    box-shadow: 5px 5px 10px gray;
+    img {
+        align-self: center;
+        width: 70px;
+        height: 70px;
+    }
+`
