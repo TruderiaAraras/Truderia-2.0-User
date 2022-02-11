@@ -17,8 +17,6 @@ export const Container = styled.div`
 
   background-image: url(${menuBackground});
   background-size: cover;
-  overflow: scroll;
-
 `;
 
 export const Header = styled.div`
@@ -43,6 +41,7 @@ export const Logo = styled.div`
 export const Content = styled.div`
   width: 95%;
   margin: 20px 0 30px;
+  overflow: scroll;
 `;
 
 export const Footer = styled.div`

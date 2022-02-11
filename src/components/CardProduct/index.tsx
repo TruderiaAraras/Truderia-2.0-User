@@ -34,7 +34,7 @@ export const CardProduct: React.FC<Props> = ({ data }) => {
     <>
       <Container>
         <WrapperPhoto>
-          <Photo src={data?.photo} />
+          <Photo src="https://revistacontinente.com.br/image/view/news/image/1218" />
         </WrapperPhoto>
 
         <WrapperContent>
@@ -46,10 +46,10 @@ export const CardProduct: React.FC<Props> = ({ data }) => {
           <BottomView>
             <WrapperPrice>
               <Price>
-                <span>R$</span>{data?.price}
+                <span>R$</span>{data?.price},00
               </Price>
 
-              {data?.miniPrice && <PriceMini>{`Mini ${data?.miniPrice}`}</PriceMini>}
+              {data?.miniPrice && <PriceMini>{`Mini ${data?.miniPrice},00`}</PriceMini>}
             </WrapperPrice>
 
             <Button>

@@ -42,8 +42,8 @@ export const Title = styled.p`
 
 export const Description = styled.p`
   font-size: 13px;
-  line-height: 11px;
-  font-family: "Roboto", sans-serif;
+  line-height: 13px;
+  font-family: "Roboto Condensed", sans-serif;
   text-indent: 1em;
   color: ${({ theme }) => theme.color.SHAPE};
 `;
