@@ -29,7 +29,7 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={() => onRequestClose()}
       ariaHideApp={false}
-      style={type === 'size' ? customSizeStyles : customTimeStyles}
+      // style={type === 'size' ? customSizeStyles : customTimeStyles}
     >
       {type === "size" && (
         <>
