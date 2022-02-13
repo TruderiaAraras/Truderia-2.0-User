@@ -89,6 +89,7 @@ export const CardTitle = styled.div`
 `;
 
 export const CardBody = styled.div`
+    overflow: scroll;
     grid-area: body;
     text-align: center;
 `
