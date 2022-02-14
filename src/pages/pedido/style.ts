@@ -30,7 +30,7 @@ export const Header = styled.header`
             background-color: red;
             color: white;
             padding: 2px;
-            border: red outset 1px;
+            border: firebrick outset 2px;
             border-radius: 5px;
         }
         padding-top: 8px;
