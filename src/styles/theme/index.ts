@@ -11,6 +11,7 @@ const theme = {
     SHAPE: colors.SHAPE,
     ALERT: colors.ALERT,
     SUCCESS: colors.SUCCESS,
+    BLACK: colors.BLACK,
   },
 };
 
