@@ -1,31 +1,108 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import * as yup from "yup";
+import { pt } from "yup-locale-pt";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Container } from "./style";
 
 export const Cadastro: React.FC = () => {
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  async function handleSubmit(values: any) {
+    console.log('teste')
+    await sleep(500);
+    alert(JSON.stringify(values, null, 2));
+  }
+
+  yup.setLocale(pt)
+  const validation = yup.object().shape({
+    nome: yup.string().required(),
+    email: yup.string().email().required(),
+    aniversario: yup.date().required(),
+    celular: yup.string().required(),
+    cep: yup.string().min(8).max(8).required(),
+    rua: yup.string().required(),
+    numero: yup.string().required(),
+    endereco: yup.string().required(),
+    bairro: yup.string().required(),
+    cidade: yup.string().required(),
+    estado: yup.string().required(),
+    complemento: yup.string().notRequired()
+  });
+
   return (
-    <div>
-      <h1>Anywhere in your app!</h1>
+    <Container>
+      <h1>FORMULÁRIO DE CADASTRO</h1>
       <Formik
         initialValues={{
-          name: "",
-          age: ""
+          nome: "",
+          email: "",
+          aniversario: "",
+          celular: "",
+          cep: "",
+          rua: "",
+          numero: "",
+          bairro: "",
+          cidade: "",
+          estado: "",
+          complemento: ""
         }}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={async (values) => await handleSubmit(values)}
+        validationSchema={validation}
       >
-        <Form>
+        <Form> 
           <div>
-            <label htmlFor="name">Nome: </label>
-            <Field id="name" name="name" type="text" style={{ border: '2px ridge gray', borderRadius: '5px', padding: '4px' }} />
+            <label htmlFor="nome">Nome: </label>
+            <Field id="nome" name="nome" type="text" />
+            <ErrorMessage component="span" name="nome" />
           </div>
           <div>
-            <label htmlFor="age">Idade: </label>
-            <Field id="age" name="age" type="number" style={{ border: '2px ridge gray', borderRadius: '5px', padding: '4px' }} />
+            <label htmlFor="email">E-mail: </label>
+            <Field id="email" name="email" type="email" />
+            <ErrorMessage component="span" name="email" />
           </div>
+          <div>
+            <label htmlFor="aniversario">Aniversário: </label>
+            <Field id="aniversario" name="aniversario" type="date" />
+            <ErrorMessage component="span" name="aniversario" />
+          </div>
+          <div>
+            <label htmlFor="celular">Celular: </label>
+            <Field id="celular" name="celular" type="text" />
+            <ErrorMessage component="span" name="celular" />
+          </div>
+          <div>
+            <label htmlFor="cep">CEP: </label>
+            <Field id="cep" name="cep" type="text" />
+            <ErrorMessage component="span" name="cep" /> 
+          </div>
+          <div>
+            <label htmlFor="rua">Rua: </label>
+            <Field id="rua" name="rua" type="text" />
+            <ErrorMessage component="span" name="rua" />
+            <hr />
+            <label htmlFor="numero">Número: </label>
+            <Field id="numero" name="numero" type="text" />
+            <ErrorMessage component="span" name="numero" />
+            <hr />
+            <label htmlFor="bairro">Bairro: </label>
+            <Field id="bairro" name="bairro" type="text" />
+            <ErrorMessage  component="span" name="bairro" />
+            <hr />
+            <label htmlFor="cidade">Cidade: </label>
+            <Field id="cidade" name="cidade" type="text" />
+            <ErrorMessage component="span" name="cidade" />
+            <hr />
+            <label htmlFor="estado">Estado: </label>
+            <Field id="estado" name="estado" type="text" />
+            <ErrorMessage component="span" name="estado" />
+            <hr />
+            <label htmlFor="complemento">Complemento: </label>
+            <Field id="complemento" name="complemento" type="text" />
+            <ErrorMessage component="span" name="complemento" />
+          </div>
+          <input id="send" name="send" type="submit" />
         </Form>
       </Formik>
-    </div>
+    </Container>
   );
 };
