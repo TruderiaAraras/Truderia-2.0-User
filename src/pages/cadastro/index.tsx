@@ -5,13 +5,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Container } from "./style";
 
 export const Cadastro: React.FC = () => {
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-  async function handleSubmit(values: any) {
-    console.log('teste')
-    await sleep(500);
-    alert(JSON.stringify(values, null, 2));
-  }
 
   yup.setLocale(pt)
   const validation = yup.object().shape({
@@ -22,7 +15,6 @@ export const Cadastro: React.FC = () => {
     cep: yup.string().min(8).max(8).required(),
     rua: yup.string().required(),
     numero: yup.string().required(),
-    endereco: yup.string().required(),
     bairro: yup.string().required(),
     cidade: yup.string().required(),
     estado: yup.string().required(),
@@ -46,7 +38,11 @@ export const Cadastro: React.FC = () => {
           estado: "",
           complemento: ""
         }}
-        onSubmit={async (values) => await handleSubmit(values)}
+        onSubmit={async (values) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+          }, 500);
+        }}
         validationSchema={validation}
       >
         <Form> 
@@ -100,7 +96,7 @@ export const Cadastro: React.FC = () => {
             <Field id="complemento" name="complemento" type="text" />
             <ErrorMessage component="span" name="complemento" />
           </div>
-          <input id="send" name="send" type="submit" />
+          <button type="submit">ENVIAR</button>
         </Form>
       </Formik>
     </Container>
