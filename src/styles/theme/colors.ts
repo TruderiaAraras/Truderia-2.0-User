@@ -7,4 +7,6 @@ export const colors = {
 
   SHAPE: '#FFFFFF',
   ALERT: '#DA1E26',
+  SUCCESS: '#02A802',
+  BLACK: '##000000',
 };

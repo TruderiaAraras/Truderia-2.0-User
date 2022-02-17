@@ -48,7 +48,9 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.19",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.4"
+    "typescript": "^3.7.0"
   }
 }
