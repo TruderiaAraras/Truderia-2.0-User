@@ -39,6 +39,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
+  text-align: center;
   font-size: 30px;
   background-color: #610000;
   padding: 20px;
