@@ -31,6 +31,11 @@ export const Container = styled.div`
   justify-content: center;
   padding: 20px;
   background-color: whitesmoke;
+  .viaCep {
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+  }
 `;
 
 export const Title = styled.div`
@@ -40,22 +45,65 @@ export const Title = styled.div`
   color: white;
 `
 export const SharedControl = styled.div`
-  .sharedNome {
-    label {
-      
+  .firstDiv {
+    div:first-child {
+      align-self: flex-start;
     }
-    input {
-      margin-right: 8px;
-    }
+    display: flex;
+    flex-direction: column;    
   }
-  .sharedAniversario {
-    input {
-      padding: 4px;
+  .secondDiv {
+    label {
+      align-self: flex-start;
     }
+    display: flex;
+    flex-direction: column;
+  }
+  .city {
+    width: 80%;
+    margin-right: 5%;
+  }
+  .state {
+    width: 15%;
+  }
+  .name {
+    width: 55%;
+    margin-right: 5%;
+  }
+  .birthday {
+    width: 40%;
+  }
+  .street {
+    width: 75%;
+    margin-right: 5%;
+  }
+  .number {
+    width: 20%;
   }
   display: flex;
+  justify-content: baseline;
   flex-direction: row;
   margin-bottom: 3px;
+  width: 100%;
+`
+
+export const FormEndereco = styled.div`
+  input {
+    margin-bottom: 2px;
+  }
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 10px;
+`
+
+export const FormCep = styled.div`
+  input {
+    width: 30%;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 8px;
 `
 
 export const FormControl = styled.div`  

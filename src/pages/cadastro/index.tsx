@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as yup from "yup";
 import { pt } from "yup-locale-pt";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { IoMdRefreshCircle } from "react-icons/io";
 import {
   Container,
   FormControl,
   SubmitButton,
   Title,
   SharedControl,
+  FormCep,
+  FormEndereco
 } from "./style";
+import viaCep from "../../providers/ViaCEP/viaCep";
 
 export const Cadastro: React.FC = () => {
+  const valuesRef = useRef(null);
+
+  function viaCepFill() {
+    
+  }
+
   yup.setLocale(pt);
   const validation = yup.object().shape({
     nome: yup.string().required(),
@@ -27,10 +37,11 @@ export const Cadastro: React.FC = () => {
   });
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'whitesmoke' }}>
       <Title>FORMULÁRIO DE CADASTRO</Title>
       <Container>
         <Formik
+          innerRef={valuesRef}
           initialValues={{
             nome: "",
             email: "",
@@ -53,16 +64,14 @@ export const Cadastro: React.FC = () => {
         >
           <Form>
             <SharedControl>
-              <div className="sharedNome">
-                <label htmlFor="nome">Nome: </label>
-                <hr />
+              <div className="firstDiv name">                
+                <label htmlFor="nome">Nome: </label>                
                 <Field id="nome" name="nome" type="text" />
-                <ErrorMessage component="span" name="nome" />
+                <ErrorMessage component="span" name="nome" />                
               </div>
-              <div className="sharedAniversario">
+              <div className="secondDiv birthday">
                 <label htmlFor="aniversario">Aniversário: </label>
-                <hr />
-                <Field id="aniversario" name="aniversario" type="date" />
+                <Field id="aniversario" name="aniversario" type="date" style={{ padding: '4px' }} />
                 <ErrorMessage component="span" name="aniversario" />
               </div>
             </SharedControl>
@@ -76,36 +85,43 @@ export const Cadastro: React.FC = () => {
               <Field id="celular" name="celular" type="text" />
               <ErrorMessage component="span" name="celular" />
             </FormControl>
-            <FormControl>
-              <label htmlFor="cep">CEP: </label>
+            <FormCep>
+              <label htmlFor="cep">CEP:  <IoMdRefreshCircle className="viaCep" onClick={() => viaCepFill()} /></label>
               <Field id="cep" name="cep" type="text" />
               <ErrorMessage component="span" name="cep" />
-            </FormControl>
-            <FormControl>
-              <label htmlFor="rua">Rua: </label>
-              <Field id="rua" name="rua" type="text" />
-              <ErrorMessage component="span" name="rua" />
-              <hr />
-              <label htmlFor="numero">Número: </label>
-              <Field id="numero" name="numero" type="text" />
-              <ErrorMessage component="span" name="numero" />
-              <hr />
-              <label htmlFor="bairro">Bairro: </label>
-              <Field id="bairro" name="bairro" type="text" />
-              <ErrorMessage component="span" name="bairro" />
-              <hr />
-              <label htmlFor="cidade">Cidade: </label>
-              <Field id="cidade" name="cidade" type="text" />
-              <ErrorMessage component="span" name="cidade" />
-              <hr />
-              <label htmlFor="estado">Estado: </label>
-              <Field id="estado" name="estado" type="text" />
-              <ErrorMessage component="span" name="estado" />
-              <hr />
-              <label htmlFor="complemento">Complemento: </label>
-              <Field id="complemento" name="complemento" type="text" />
-              <ErrorMessage component="span" name="complemento" />
-            </FormControl>
+            </FormCep>
+            <FormEndereco>
+              <SharedControl>
+                <div className="firstDiv street">
+                  <label htmlFor="rua">Rua: </label>
+                  <Field id="rua" name="rua" type="text" />
+                  <ErrorMessage component="span" name="rua" />
+                </div>
+                <div className="secondDiv number">
+                  <label htmlFor="numero">Número: </label>
+                  <Field id="numero" name="numero" type="text" />
+                  <ErrorMessage component="span" name="numero" />
+                </div>
+              </SharedControl>
+                <label htmlFor="bairro">Bairro: </label>
+                <Field id="bairro" name="bairro" type="text" />
+                <ErrorMessage component="span" name="bairro" /> 
+                <SharedControl>
+                  <div className="firstDiv city">
+                    <label htmlFor="cidade">Cidade: </label>
+                    <Field id="cidade" name="cidade" type="text" />
+                    <ErrorMessage component="span" name="cidade" />  
+                  </div>
+                  <div className="secondDiv state">
+                    <label htmlFor="estado">Estado: </label>
+                    <Field id="estado" name="estado" type="text" />
+                    <ErrorMessage component="span" name="estado" />  
+                  </div>
+                </SharedControl>
+                <label htmlFor="complemento">Complemento: </label>
+                <Field id="complemento" name="complemento" type="text" />
+                <ErrorMessage component="span" name="complemento" />
+            </FormEndereco>
             <SubmitButton>
               <button
                 type="submit"
