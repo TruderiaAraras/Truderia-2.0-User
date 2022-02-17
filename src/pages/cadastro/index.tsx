@@ -18,7 +18,12 @@ export const Cadastro: React.FC = () => {
   const valuesRef = useRef(null);
 
   function viaCepFill() {
-    
+    if (valuesRef.current.values.cep.length === 8) {
+      const response = viaCep.get(`${valuesRef.current.values.cep}/json/`)
+        .then(res => {
+
+        })
+    }
   }
 
   yup.setLocale(pt);
