@@ -4,12 +4,13 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { AddItem, PagePedido } from '../pages';
+import { AddItem, PagePedido, Cadastro } from '../pages';
 
 const Router = (): React.ReactElement => (
   <BrowserRouter>
     <Routes>
-      <Route path="/Pedido" element={<PagePedido />} />
+      <Route path="/cadastro" element={<Cadastro />} />
+      <Route path="/pedido" element={<PagePedido />} />
       <Route path="/addItem" element={<AddItem />} />
     </Routes>
   </BrowserRouter>
