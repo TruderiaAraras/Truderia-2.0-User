@@ -158,8 +158,8 @@ export const TextArea = styled.textarea`
 
   font-size: 15px;
   font-family: "Roboto Condensed", sans-serif;
-  
+
   &:focus {
-    border: 1px solid ${({theme}) => theme.color.PRIMARY};
+    border: 1px solid ${({ theme }) => theme.color.PRIMARY};
   }
 `;

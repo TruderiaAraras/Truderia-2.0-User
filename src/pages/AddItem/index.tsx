@@ -31,10 +31,10 @@ export const AddItem: React.FC = () => {
 
   function handleCount(value: string) {
     if (value === "+") {
-      setQuantityProduct(state => state + 1);
+      setQuantityProduct((state) => state + 1);
     } else {
       if (quantityProduct <= 0) return;
-      setQuantityProduct(state => state - 1);
+      setQuantityProduct((state) => state - 1);
     }
   }
 
@@ -51,7 +51,7 @@ export const AddItem: React.FC = () => {
         <ButtonClose onClick={handleClose}>
           <span>Cancelar</span>
         </ButtonClose>
-        <Photo src="http://github.com/joaovictormartin.png" />
+        <Photo src="https://revistacontinente.com.br/image/view/news/image/1218" />
       </Header>
 
       <InfoWrapper>
@@ -66,8 +66,8 @@ export const AddItem: React.FC = () => {
       <OptionInput>
         <TitleItem>Sorvetes</TitleItem>
         <WrapperOption>
-          {[1,2,3,4].map(item => (
-            <InputOptions key={item} totalCount={totalCount} setTotalCount={setTotalCount}/>
+          {[1, 2, 3, 4, 5, 6, 7].map((item) => (
+            <InputOptions key={item} setTotalCount={setTotalCount} />
           ))}
         </WrapperOption>
       </OptionInput>
@@ -75,8 +75,8 @@ export const AddItem: React.FC = () => {
       <OptionInput>
         <TitleItem>Bebidas</TitleItem>
         <WrapperOption>
-          {[1,2,3,].map(item => (
-            <InputOptions key={item} totalCount={totalCount} setTotalCount={setTotalCount}/>
+          {[1, 2, 3].map((item) => (
+            <InputOptions key={item} setTotalCount={setTotalCount} />
           ))}
         </WrapperOption>
       </OptionInput>
@@ -97,8 +97,8 @@ export const AddItem: React.FC = () => {
         </ButtonQuantity>
 
         <ButtonAdd>
-            <span>Adicionar ao carrinho</span>
-            <span>{transformToRealBRL(100)}</span>
+          <span>Adicionar ao carrinho</span>
+          <span>{transformToRealBRL(100)}</span>
         </ButtonAdd>
       </Footer>
     </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Container,
@@ -11,24 +11,24 @@ import {
 } from "./style";
 
 interface Props {
-  totalCount: number;
-  setTotalCount: (state) => void;
+  setTotalCount: (state: any) => void;
 }
 
-export const InputOptions: React.FC<Props> = ({
-  totalCount,
-  setTotalCount,
-}) => {
+export const InputOptions: React.FC<Props> = ({ setTotalCount }) => {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTotalCount((state: any) => state + count * 500);
+  }, [count]);
 
   function handleCount(value: string) {
     if (value === "+") {
       setCount((state) => state + 1);
-      setTotalCount(totalCount + count);
+      setTotalCount((state: any) => state + count * 500);
     } else {
       if (count <= 0) return;
       setCount((state) => state - 1);
-      setTotalCount(totalCount);
+      setTotalCount((state: any) => state + count * 500);
     }
   }
 
@@ -48,7 +48,7 @@ export const InputOptions: React.FC<Props> = ({
       </Quantity>
 
       <PhotoOption>
-        <img src="http://github.com/joaovictormartin.png" alt="" />
+        <img src="https://revistacontinente.com.br/image/view/news/image/1218" alt="" />
       </PhotoOption>
 
       <Name>
