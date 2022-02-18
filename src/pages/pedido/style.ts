@@ -19,23 +19,20 @@ export const ContainerPedido = styled.div`
 `;
 
 export const Header = styled.header`
-    .go-forward {
-        padding-top: 3px;
-        padding-right: 3px;
-        width: 10%;
-        align-self: flex-start;
-    }
     .go-back {
         button {
-            background-color: red;
+            background-image: linear-gradient(to bottom, #FF0000 0%, #A40000 100%);
             color: white;
             padding: 2px;
-            border: firebrick outset 2px;
             border-radius: 5px;
         }
         padding-top: 8px;
         width: 10%;
+        z-index: 1000;
+        left: 1rem;
+        top: 1rem;
         align-self: flex-start;
+        position: fixed;
     }
     .titulo {
         width: 80%;
