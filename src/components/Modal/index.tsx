@@ -2,8 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 
 import {
-  //customSizeStyles,
-  //customTimeStyles,
+  customSizeStyles,
+  customTimeStyles,
   Content,
   Title,
   Buttons,
@@ -29,7 +29,64 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={() => onRequestClose()}
       ariaHideApp={false}
-      // style={type === 'size' ? customSizeStyles : customTimeStyles}
+      style={type === 'size' ?{
+        overlay: {
+          height: "100vh",
+          background: "rgba(0,0,0,0.5)",
+          position: "fixed",
+      
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+      
+          zIndex: 5,
+        },
+        content: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#3A1212",
+      
+          position: "relative",
+          top: 0,
+          left: 0,
+          overflow: "visible",
+      
+          padding: 32,
+      
+          border: "none",
+          borderRadius: 5,
+        },
+      } : {
+        overlay: {
+          height: "100vh",
+          background: "rgba(0,0,0,0.5)",
+          position: "fixed",
+      
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+      
+          zIndex: 5,
+        },
+        content: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+      
+          width: "100%",
+          background: "#3A1212",
+          position: "relative",
+          top: 0,
+          left: 0,
+          padding: 32,
+      
+          border: "none",
+          borderRadius: 15,
+        },
+      }}
     >
       {type === "size" && (
         <>

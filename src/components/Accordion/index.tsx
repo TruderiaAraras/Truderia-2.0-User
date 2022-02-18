@@ -12,11 +12,12 @@ import { CardProduct } from "../../components/CardProduct";
 import "./style.css";
 
 interface Props {
-  title?: string;
   item?: any;
+  title?: string;
+  onClick?: () => void;
 }
 
-export const NewAccordion: React.FC<Props> = ({ title, item }) => {
+export const NewAccordion: React.FC<Props> = ({ title, item, onClick }) => {
   return (
     <Accordion>
       <AccordionItem>
@@ -26,7 +27,7 @@ export const NewAccordion: React.FC<Props> = ({ title, item }) => {
 
         <AccordionItemPanel>
           {item.map((iten: any, index: number) => (
-            <CardProduct key={index} data={iten} />
+            <CardProduct key={index} data={iten} onClick={onClick} />
           ))}
         </AccordionItemPanel>
       </AccordionItem>

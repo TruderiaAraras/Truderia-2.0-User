@@ -26,10 +26,11 @@ export interface CardProductProps {
 }
 
 interface Props {
+  onClick?: () => void;
   data?: CardProductProps;
 }
 
-export const CardProduct: React.FC<Props> = ({ data }) => {
+export const CardProduct: React.FC<Props> = ({ data, onClick }) => {
   return (
     <>
       <Container>
@@ -52,7 +53,7 @@ export const CardProduct: React.FC<Props> = ({ data }) => {
               {data?.miniPrice && <PriceMini>{`Mini ${data?.miniPrice},00`}</PriceMini>}
             </WrapperPrice>
 
-            <Button>
+            <Button onClick={onClick}>
               <ButtonTitle>Escolher</ButtonTitle>
             </Button>
           </BottomView>

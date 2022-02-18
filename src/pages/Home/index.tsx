@@ -22,9 +22,9 @@ import {
 export const Home: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
+  function openModal() {
+    setIsOpen(true);
+  }
 
   function closeModal() {
     setIsOpen(false);
@@ -38,10 +38,17 @@ export const Home: React.FC = () => {
         </Header>
 
         <Content>
-          {menuView.map(({category,  name: categoryName, items: categoryItems}) => (
-            <NewAccordion key={category} title={categoryName} item={categoryItems} />
-          ))}
-          <div/>
+          {menuView.map(
+            ({ category, name: categoryName, items: categoryItems }) => (
+              <NewAccordion
+                key={category}
+                title={categoryName}
+                item={categoryItems}
+                onClick={openModal}
+              />
+            )
+          )}
+          <div />
         </Content>
 
         <Footer>
@@ -64,7 +71,7 @@ export const Home: React.FC = () => {
         </Footer>
       </Container>
 
-      <NewModal type="time" isOpen={modalIsOpen} onRequestClose={closeModal} />
+      <NewModal type="size" isOpen={modalIsOpen} onRequestClose={closeModal} />
     </>
   );
 };
