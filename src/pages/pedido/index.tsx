@@ -23,8 +23,7 @@ import { TiArrowForwardOutline } from "react-icons/ti";
 import { AiOutlineWhatsApp, AiFillProfile } from "react-icons/ai";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { FaRegCreditCard } from "react-icons/fa";
-import retiradaImg from "../../assets/Menu/Delivery/food-withdraw.png";
-import entregaImg from "../../assets/Menu/Delivery/food-delivery.png";
+import { retiradaImg, entregaImg } from "../../assets/Menu/Delivery/index";
 import produtosArray from "./produtos.json";
 
 export const PagePedido: React.FC = () => {
@@ -69,12 +68,10 @@ export const PagePedido: React.FC = () => {
     <ContainerPedido>
       <Header>
         <div className="go-back">
-          <button><BsArrowLeftCircle /></button>
+          <button onClick={() => alert('Chamar outra página')}><BsArrowLeftCircle /></button>
         </div>
         <div className="titulo">
           Resumo do Pedido
-        </div>
-        <div className="go-forward">
         </div>
       </Header>
       <Card noFooter={false}>
@@ -139,7 +136,7 @@ export const PagePedido: React.FC = () => {
           </Form>
         </CardBody>
       </Card>
-      <Card noFooter>
+      <Card noFooter={false}>
         <CardTitle> 
           <div>
             Forma de Recebimento
@@ -160,6 +157,7 @@ export const PagePedido: React.FC = () => {
             </Delivery>
           </Images>
         </CardBody>
+        {<CardFooter></CardFooter>}
       </Card>
       <Card noFooter>
         <CardTitle>
