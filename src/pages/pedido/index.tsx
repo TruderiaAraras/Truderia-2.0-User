@@ -11,11 +11,13 @@ import {
   Withdraw,
   Delivery,
   Images,
+  Label,
+  Input,
   Dropdown,
+  MoreInfo,
   Header,
-  Footer
+  Footer,
 } from "./style";
-import { useFormik } from "formik";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import { CgTrash } from "react-icons/cg";
@@ -24,21 +26,48 @@ import { AiOutlineWhatsApp, AiFillProfile } from "react-icons/ai";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { FaRegCreditCard } from "react-icons/fa";
 import { retiradaImg, entregaImg } from "../../assets/Menu/Delivery/index";
+import { useCookies } from "react-cookie";
 import produtosArray from "./produtos.json";
 
 export const PagePedido: React.FC = () => {
   const [produtos, setProdutos] = useState([...produtosArray.produtos]);
   const [taxa, setTaxa] = useState(0);
+  const [dlvrInfo, setDlvrInfo] = useState(undefined);
+  const [cookie, setCookie, removeCookie] = useCookies();
 
-  const formik = useFormik({
-    initialValues: {
-      nome: "",
-      celular: "",
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+  const locationInfo = (
+    <MoreInfo>
+      <p className="title"><b>Retirar em:</b></p>
+      <p className="ender">Rua Cândida Lacerda, 470, Centro - Araras/SP</p>
+      <p className="moreOfMore">
+        <i>Próximo a escadaria da rodoviaria e a Av. do Café</i>
+      </p>
+    </MoreInfo>
+  );
+
+  const dlvryForm = (
+    <Form>
+      <div className="sharedDiv">
+        <div className="firstDiv">
+          <Label id="name">CEP: </Label>
+          <Input id="name" name="name" placeholder="Seu nome..." />
+        </div>
+        <div className="secondDiv">
+          <Label id="number">Numero: </Label>
+          <Input id="number" name="number" placeholder="Número da moradia..." />
+        </div>
+      </div>      
+      <Label id="street">Rua: </Label>
+      <Input id="street" name="street" placeholder="Sua rua..." />
+      <hr />
+      <hr />
+      <Label id="neighborhood">Bairro: </Label>
+      <Input id="neighborhood" name="neighborhood" placeholder="Seu bairro..." />
+      <hr />
+      <Label id="complement">Complemento: </Label>
+      <Input id="complement" name="complement" placeholder="Um complemento" />
+    </Form>
+  );
 
   function deleteProd(indexProduto: number) {
     const newProdutos = produtos.filter(
@@ -68,19 +97,17 @@ export const PagePedido: React.FC = () => {
     <ContainerPedido>
       <Header>
         <div className="go-back">
-          <button onClick={() => alert('Chamar outra página')}><BsArrowLeftCircle /></button>
+          <button onClick={() => console.log(cookie.Produto)}>
+            <BsArrowLeftCircle />
+          </button>
         </div>
-        <div className="titulo">
-          Resumo do Pedido
-        </div>
+        <div className="titulo">Resumo do Pedido</div>
       </Header>
       <Card noFooter={false}>
         <CardTitle>
+          <div>Itens no Carrinho</div>
           <div>
-            Itens no Carrinho
-          </div>
-          <div>
-            <RiShoppingCartLine style={{ marginLeft: '15px' }} />
+            <RiShoppingCartLine style={{ marginLeft: "15px" }} />
           </div>
         </CardTitle>
         <CardBody>
@@ -112,62 +139,65 @@ export const PagePedido: React.FC = () => {
           </Table>
         </CardBody>
         <CardFooter>
-          <Button onClick={() => alert("Chamar outra Página")}>
+          <Button
+            onClick={() => alert("Chamar outra Página")}
+            style={{ height: "40px" }}
+          >
             Adicionar mais Itens...
           </Button>
         </CardFooter>
       </Card>
       <Card noFooter>
         <CardTitle>
+          <div>Dados</div>
           <div>
-            Dados
+            <AiFillProfile style={{ marginLeft: "15px" }} />
           </div>
-          <div>
-            <AiFillProfile style={{ marginLeft: '15px' }} />
-          </div>
-        </CardTitle> 
+        </CardTitle>
         <CardBody>
-          <Form id="myForm" onSubmit={formik.handleSubmit}>
-            <label id="nome">Nome: </label>
-            <input id="nome" name="nome" placeholder="Seu nome..." />
+          <Form id="myForm">
+            <Label id="nome">CEP: </Label>
+            <Input id="nome" name="nome" placeholder="Seu nome..." />
             <hr />
-            <label id="celular">Celular: </label>
-            <input id="celular" name="celular" placeholder="(99) 99999-9999" />
+            <Label id="celular">Celular: </Label>
+            <Input id="celular" name="celular" placeholder="(99) 99999-9999" />
           </Form>
         </CardBody>
       </Card>
       <Card noFooter={false}>
-        <CardTitle> 
+        <CardTitle>
+          <div>Forma de Recebimento</div>
           <div>
-            Forma de Recebimento
-          </div>
-          <div>
-            <MdOutlineDeliveryDining style={{ marginLeft: '15px' }} />
+            <MdOutlineDeliveryDining style={{ marginLeft: "15px" }} />
           </div>
         </CardTitle>
         <CardBody>
           <Images>
-            <Withdraw onClick={() => setTaxa(0)}>
+            <Withdraw onClick={() => {
+              setTaxa(0);
+              setDlvrInfo(locationInfo);
+            }}>
               Retirada
               <img src={retiradaImg} alt="Retirada" />
             </Withdraw>
-            <Delivery onClick={() => setTaxa(5)}>
+            <Delivery onClick={() => {
+              setTaxa(5);
+              setDlvrInfo(dlvryForm);
+            }}>
               Entrega
               <img src={entregaImg} alt="Entrega" />
             </Delivery>
           </Images>
         </CardBody>
-        {<CardFooter></CardFooter>}
+        <CardFooter>{ dlvrInfo }</CardFooter>
       </Card>
       <Card noFooter>
         <CardTitle>
-          <div>            
-            Pagamentos 
-          </div>
+          <div>Pagamentos</div>
           <div>
-            <FaRegCreditCard style={{ marginLeft: '15px' }} />
+            <FaRegCreditCard style={{ marginLeft: "15px" }} />
           </div>
-        </CardTitle>  
+        </CardTitle>
         <CardBody>
           <Dropdown>
             <label id="metodos">Meio de Pagamento:</label>
@@ -208,7 +238,7 @@ export const PagePedido: React.FC = () => {
                 }}
               >
                 <td>Taxa de Entrega</td>
-                <td>{ taxa > 0 ? convertToReal(taxa) : null }</td>
+                <td>{taxa > 0 ? convertToReal(taxa) : null}</td>
               </tr>
             </tbody>
           </Table>
@@ -232,15 +262,21 @@ export const PagePedido: React.FC = () => {
           </div>
         </CardFooter>
       </Card>
-      <Footer onClick={() => alert('Ir Para WhatsApp')}>
+      <Footer onClick={() => alert("Ir Para WhatsApp")}>
         <div>
-          <AiOutlineWhatsApp style={{ fontSize: '35px', alignSelf: 'flex-end', marginRight: '20px' }} />
+          <AiOutlineWhatsApp
+            style={{
+              fontSize: "35px",
+              alignSelf: "flex-end",
+              marginRight: "20px",
+            }}
+          />
         </div>
+        <div>IR PARA WHATSAPP</div>
         <div>
-          IR PARA WHATSAPP
-        </div>
-        <div>
-          <TiArrowForwardOutline style={{ alignSelf: 'flex-end', marginLeft: '5px' }} />
+          <TiArrowForwardOutline
+            style={{ alignSelf: "flex-end", marginLeft: "5px" }}
+          />
         </div>
       </Footer>
     </ContainerPedido>

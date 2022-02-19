@@ -1,4 +1,5 @@
 import React from "react";
+import { useCookies } from "react-cookie";
 
 import {
   Container,
@@ -30,7 +31,9 @@ interface Props {
   data?: CardProductProps;
 }
 
-export const CardProduct: React.FC<Props> = ({ data, onClick }) => {
+export const CardProduct: React.FC<Props> = ({ data }) => {//, onClick }) => {
+  const [cookie, setCookie, removeCookie] = useCookies();
+
   return (
     <>
       <Container>
@@ -53,7 +56,7 @@ export const CardProduct: React.FC<Props> = ({ data, onClick }) => {
               {data?.miniPrice && <PriceMini>{`Mini ${data?.miniPrice},00`}</PriceMini>}
             </WrapperPrice>
 
-            <Button onClick={onClick}>
+            <Button onClick={() => setCookie("Produto", data)}>
               <ButtonTitle>Escolher</ButtonTitle>
             </Button>
           </BottomView>

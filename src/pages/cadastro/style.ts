@@ -47,7 +47,7 @@ export const Title = styled.div`
 `
 export const SharedControl = styled.div`
   .firstDiv {
-    div:first-child {
+    label {
       align-self: flex-start;
     }
     display: flex;
