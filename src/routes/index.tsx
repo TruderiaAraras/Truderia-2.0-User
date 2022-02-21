@@ -4,8 +4,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-
-import { Welcome, Home, AddItem, PagePedido, Cadastro } from '../pages';
+import { Welcome, Home, AddItem, PagePedido, Cadastro } from '../pages'
 
 const Router = (): React.ReactElement => (
   <BrowserRouter>

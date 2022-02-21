@@ -2,8 +2,11 @@ import React, { useRef } from "react";
 import * as yup from "yup";
 import { pt } from "yup-locale-pt";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link, useNavigate } from "react-router-dom";
+import { FaTimesCircle } from "react-icons/fa";
 import { IoMdRefreshCircle } from "react-icons/io";
 import {
+  Voltar,
   Container,
   FormControl,
   SubmitButton,
@@ -16,13 +19,25 @@ import viaCep from "../../providers/ViaCEP/viaCep";
 
 export const Cadastro: React.FC = () => {
   const valuesRef = useRef(null);
+  const navigate = useNavigate();
 
   function viaCepFill() {
     if (valuesRef.current.values.cep.length === 8) {
-      const response = viaCep.get(`${valuesRef.current.values.cep}/json/`)
+      viaCep.get(`${valuesRef.current.values.cep}/json/`)
         .then(res => {
+          if (res.data.erro === true) alert('CPF não encontrado!');
 
+          const ender = res.data;
+          valuesRef.current.values.estado = ender.uf;
+          valuesRef.current.values.cidade = ender.localidade;
+          valuesRef.current.values.bairro = ender.bairro;
+          valuesRef.current.values.rua = ender.logradouro;
+          (document.getElementById('estado') as HTMLInputElement).value = ender.uf;
+          (document.getElementById('cidade') as HTMLInputElement).value = ender.localidade;
+          (document.getElementById('bairro') as HTMLInputElement).value = ender.bairro;
+          (document.getElementById('rua') as HTMLInputElement).value = ender.logradouro;
         })
+        .catch(err => console.log(err));
     }
   }
 
@@ -32,9 +47,9 @@ export const Cadastro: React.FC = () => {
     email: yup.string().email().required(),
     aniversario: yup.date().required(),
     celular: yup.string().required(),
-    cep: yup.string().min(8).max(8).required(),
+    cep: yup.string().max(8).min(8).required(),
     rua: yup.string().required(),
-    numero: yup.string().required(),
+    numero: yup.number().required(),
     bairro: yup.string().required(),
     cidade: yup.string().required(),
     estado: yup.string().required(),
@@ -43,6 +58,9 @@ export const Cadastro: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: 'whitesmoke' }}>
+      <Link to="/Home">
+        <Voltar><FaTimesCircle /></Voltar>      
+      </Link>
       <Title>FORMULÁRIO DE CADASTRO</Title>
       <Container>
         <Formik
@@ -61,9 +79,11 @@ export const Cadastro: React.FC = () => {
             complemento: "",
           }}
           onSubmit={async (values) => {
+            alert(JSON.stringify(values, null, 2));
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-            }, 500);
+              // Rever não sei após o cadastro para onde o cliente deve iá ou voltar
+              navigate('/Home')
+            }, 1000);
           }}
           validationSchema={validation}
         >
@@ -91,7 +111,7 @@ export const Cadastro: React.FC = () => {
               <ErrorMessage component="span" name="celular" />
             </FormControl>
             <FormCep>
-              <label htmlFor="cep">CEP:  <IoMdRefreshCircle className="viaCep" onClick={() => viaCepFill()} /></label>
+              <label htmlFor="cep">CEP: <IoMdRefreshCircle className="viaCep" onClick={() => viaCepFill()} /></label>
               <Field id="cep" name="cep" type="text" />
               <ErrorMessage component="span" name="cep" />
             </FormCep>

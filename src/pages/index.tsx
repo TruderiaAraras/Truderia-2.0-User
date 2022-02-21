@@ -1,5 +1,5 @@
 export * from './Home';
 export * from './Welcome';
-export * from './cadastro';
-export * from './pedido';
+export * from './Cadastro';
+export * from './Pedido';
 export * from './AddItem';

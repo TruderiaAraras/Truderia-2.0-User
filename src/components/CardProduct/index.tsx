@@ -56,7 +56,7 @@ export const CardProduct: React.FC<Props> = ({ data }) => {//, onClick }) => {
               {data?.miniPrice && <PriceMini>{`Mini ${data?.miniPrice},00`}</PriceMini>}
             </WrapperPrice>
 
-            <Button onClick={() => setCookie("Produto", data)}>
+            <Button onClick={() => setCookie("Produto", data, { secure: true, sameSite: 'none' })}>
               <ButtonTitle>Escolher</ButtonTitle>
             </Button>
           </BottomView>

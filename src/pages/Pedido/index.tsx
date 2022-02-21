@@ -18,6 +18,7 @@ import {
   Header,
   Footer,
 } from "./style";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import { CgTrash } from "react-icons/cg";
@@ -34,6 +35,7 @@ export const PagePedido: React.FC = () => {
   const [taxa, setTaxa] = useState(0);
   const [dlvrInfo, setDlvrInfo] = useState(undefined);
   const [cookie, setCookie, removeCookie] = useCookies();
+  const navigate = useNavigate();
 
   const locationInfo = (
     <MoreInfo>
@@ -93,11 +95,37 @@ export const PagePedido: React.FC = () => {
     return valorTotal;
   }
 
+  function mensagemWhatsapp() {
+    let texto = `
+    *PEDIDO:*
+    *Nome:* 
+    *Telefone:* 
+    *Endereço:* 
+    _*Obs.:*_
+    `
+    for (const item of cookie.produtos) {
+      texto += `
+        ${item.children[0].innerHTML} - ${item.children[1].innerHTML.replace('IS', 'L').replace('SORVETES', 'SORVETE').replace('ENTREGAS', 'ENTREGA')} de ${item.children[2].innerHTML}
+      `
+    }
+
+    texto += `
+    *Forma de Pagamento:*
+    `
+    if (cookie) {
+      texto += `*Troco para:* R$`
+    }
+
+    texto = window.encodeURIComponent(texto);
+    window.open("https://api.whatsapp.com/send?phone=5519996129909&text=" + texto, "_blank");
+    // Deveria voltar para página de compra após o encaminhamento?
+  }
+
   return (
     <ContainerPedido>
       <Header>
         <div className="go-back">
-          <button onClick={() => console.log(cookie.Produto)}>
+          <button onClick={() => navigate('/addItem')}>
             <BsArrowLeftCircle />
           </button>
         </div>
@@ -262,7 +290,7 @@ export const PagePedido: React.FC = () => {
           </div>
         </CardFooter>
       </Card>
-      <Footer onClick={() => alert("Ir Para WhatsApp")}>
+      <Footer onClick={() => mensagemWhatsapp()}>
         <div>
           <AiOutlineWhatsApp
             style={{

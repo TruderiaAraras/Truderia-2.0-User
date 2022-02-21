@@ -1,8 +1,27 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const RobotoFont = css`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+`;
+
+export const Voltar = styled.div`
+  color: white;
+  font-size: 20px;
+  background-color: red;
+  border-radius: 5px;
+  padding: 4px;
+  left: 1rem;
+  top: 1rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  svg {
+    margin-right: 1px;
+    align-self: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 export const Container = styled.div`
   ${RobotoFont}
@@ -44,14 +63,14 @@ export const Title = styled.div`
   background-color: #610000;
   padding: 20px;
   color: white;
-`
+`;
 export const SharedControl = styled.div`
   .firstDiv {
     label {
       align-self: flex-start;
     }
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
   }
   .secondDiv {
     label {
@@ -86,7 +105,7 @@ export const SharedControl = styled.div`
   flex-direction: row;
   margin-bottom: 3px;
   width: 100%;
-`
+`;
 
 export const FormEndereco = styled.div`
   input {
@@ -95,9 +114,16 @@ export const FormEndereco = styled.div`
   flex-direction: column;
   display: flex;
   margin-bottom: 10px;
-`
+`;
 
 export const FormCep = styled.div`
+  label {
+    display: flex;
+    svg {
+      margin-left: 5px;
+      align-self: center;
+    }
+  }
   input {
     width: 30%;
   }
@@ -105,25 +131,25 @@ export const FormCep = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 8px;
-`
+`;
 
-export const FormControl = styled.div`  
+export const FormControl = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 8px;
-`
+`;
 
 export const SubmitButton = styled.div`
   button {
-    border: 2px outset #E8A323;
-    background-color: #E8A323; 
+    border: 2px outset #e8a323;
+    background-color: #e8a323;
     border-radius: 5px;
     padding: 8px;
     margin-top: 10px;
   }
   .btnSubmitClick {
-    border: 2px inset #E6932B;
-    background-color: #E6932B;       
+    border: 2px inset #e6932b;
+    background-color: #e6932b;
   }
-`
+`;
