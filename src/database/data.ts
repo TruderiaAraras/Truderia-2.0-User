@@ -560,7 +560,11 @@ const miniChristmas = {
 
 export const menuView = [
   christmasTrudel,
-  // promotion,
+  // {
+  //   name: "TRUDEL DE NATAL",
+  //   category: "trudel",
+  //   items: christmasTrudel,
+  // },
   {
     name: "TRUDELS",
     category: "trudel",

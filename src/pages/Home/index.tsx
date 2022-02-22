@@ -19,8 +19,11 @@ import {
   IconFacebook,
 } from "./style";
 
+import { useCookies } from "react-cookie";
+
 export const Home: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [cookie, setCookie, removeCookie] = useCookies();
 
   function openModal() {
     setIsOpen(true);
@@ -44,7 +47,11 @@ export const Home: React.FC = () => {
                 key={category}
                 title={categoryName}
                 item={categoryItems}
-                onClick={openModal}
+                onClick={() => {
+                  const produto = { categoria: categoryName };
+                  setCookie("Produto", produto, { secure: true, sameSite: "none" });
+                  openModal();
+                }}
               />
             )
           )}

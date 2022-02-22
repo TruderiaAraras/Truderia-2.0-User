@@ -12,6 +12,10 @@ import {
   TextInfo,
 } from "./styles";
 
+import { useCookies } from "react-cookie";
+
+import { useNavigate } from "react-router-dom";
+
 interface Props {
   isOpen: boolean;
   type: "time" | "size";
@@ -19,10 +23,8 @@ interface Props {
 }
 
 export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
-
-  function teste() {
-    console.log('teste')
-  }
+  const [cookie, setCookie, removeCookie] = useCookies();
+  const navigate = useNavigate();
   
   return (
     <Modal
@@ -94,8 +96,26 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
             <Title>Qual tamanho você deseja?</Title>
 
             <Buttons>
-              <Button onClick={() => console.log("teste")}>Normal</Button>
-              <Button>Mini</Button>
+              <Button onClick={() => {
+                const produto = {
+                  categoria: cookie.Produto.categoria,
+                  sabor: cookie.Produto.sabor,
+                  descricao: cookie.Produto.descricao,                
+                  preco: cookie.Produto.fullPrice
+                };
+                setCookie("Produto", produto,{ secure: true, sameSite: "none" });
+                navigate("/addItem")
+              }}>Normal</Button>
+              <Button onClick={() => {
+                const produto = {
+                  categoria: cookie.Produto.categoria,
+                  sabor: cookie.Produto.sabor,
+                  descricao: cookie.Produto.descricao,                 
+                  preco: cookie.Produto.miniPrice
+                };
+                setCookie("Produto", produto,{ secure: true, sameSite: "none" });
+                navigate("/addItem");
+              }}>Mini</Button>
             </Buttons>
           </Content>
 
@@ -119,7 +139,7 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
               para ser direcionado(a) ao nosso Whattsapp
             </p>
           </TextInfo>
-          <Button onClick={teste}>OK</Button>
+          <Button onClick={() => navigate("/home")}>OK</Button>
         </Content>
       )}
     </Modal>

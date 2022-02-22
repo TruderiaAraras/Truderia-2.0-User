@@ -231,8 +231,8 @@ export const PagePedido: React.FC = () => {
             <label id="metodos">Meio de Pagamento:</label>
             <select name="cars" id="cars">
               <option value="default">- ESCOLHA -</option>
-              <option value="dcredtio">Cartão Crédito</option>
-              <option value="cdebito">Cartão Débito</option>
+              <option value="credtio">Cartão Crédito</option>
+              <option value="debito">Cartão Débito</option>
               <option value="pix">Pix</option>
               <option value="dinheiro">Dinheiro</option>
             </select>

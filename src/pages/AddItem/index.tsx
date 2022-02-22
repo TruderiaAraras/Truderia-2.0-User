@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { InputOptions } from "../../components/InputOptions";
-
 import {
   Container,
   ButtonClose,
@@ -21,12 +19,17 @@ import {
   ButtonAdd,
 } from "./style";
 
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
 export const AddItem: React.FC = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [quantityProduct, setQuantityProduct] = useState(0);
+  const [cookie, setCookie, removeCookie] = useCookies();
+  const navigate = useNavigate();
 
   function handleClose() {
-    console.log("teste");
+    navigate("/home");
   }
 
   function handleCount(value: string) {
@@ -55,11 +58,9 @@ export const AddItem: React.FC = () => {
       </Header>
 
       <InfoWrapper>
-        <Title>ESPECIAL DE NATAL TRUDELTTONE</Title>
+        <Title>{ cookie !== undefined ? cookie.Produto.sabor : null }</Title>
         <Description>
-          Nossa deliciosa e exclusiva massa romena, com um recheio muito
-          especial de Natal: brigadeiro branco sabor panetone e frutas
-          cristalizadas!
+          { cookie !== undefined ? cookie.Produto.descricao : null }          
         </Description>
       </InfoWrapper>
 
@@ -98,7 +99,7 @@ export const AddItem: React.FC = () => {
 
         <ButtonAdd>
           <span>Adicionar ao carrinho</span>
-          <span>{transformToRealBRL(100)}</span>
+          <span>{transformToRealBRL(totalCount)}</span>
         </ButtonAdd>
       </Footer>
     </Container>

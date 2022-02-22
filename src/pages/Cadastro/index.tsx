@@ -38,6 +38,8 @@ export const Cadastro: React.FC = () => {
           (document.getElementById('rua') as HTMLInputElement).value = ender.logradouro;
         })
         .catch(err => console.log(err));
+    } else {
+      alert('Por favor, digite o CEP corretamente!');
     }
   }
 
