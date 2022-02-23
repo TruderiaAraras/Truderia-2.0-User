@@ -33,13 +33,13 @@ export const NewAccordion: React.FC<Props> = ({ title, item, onClick }) => {
           {item.map((iten: any, index: number) => (
             <CardProduct key={index} data={iten} onClick={() => {
               onClick();
-              const product = {
+              const product = [{
                 categoria: cookie.Produto.categoria,
                 sabor: iten.flavour,
                 descricao: iten.description,                
                 fullPrice: iten.price,
                 miniPrice: iten.miniPrice
-              };
+              }];
               setCookie("Produto", product, { secure: true, sameSite: "none" });
             }} />
           ))}

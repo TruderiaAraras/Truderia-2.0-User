@@ -27,6 +27,7 @@ export const AddItem: React.FC = () => {
   const [quantityProduct, setQuantityProduct] = useState(0);
   const [cookie, setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
+  console.log(cookie)
 
   function handleClose() {
     navigate("/home");
@@ -48,6 +49,18 @@ export const AddItem: React.FC = () => {
     }).format(value);
   }
 
+  function handleSubmit() {
+    const produto = [{
+      categoria: cookie.Produto.categoria,
+      descricao: cookie.Produto.descricao,           
+      preco: cookie.Produto.preco,
+      sabor: cookie.Produto.sabor,
+      quantidade: totalCount
+    }];
+    setCookie("Produto", produto, { secure: true, sameSite: "none" });
+    navigate("/pedido");
+  }
+
   return (
     <Container>
       <Header>
@@ -58,7 +71,9 @@ export const AddItem: React.FC = () => {
       </Header>
 
       <InfoWrapper>
-        <Title>{ cookie !== undefined ? cookie.Produto.sabor : null }</Title>
+        <Title>
+          { cookie !== undefined ? cookie.Produto.sabor : null }
+        </Title>
         <Description>
           { cookie !== undefined ? cookie.Produto.descricao : null }          
         </Description>
@@ -97,7 +112,7 @@ export const AddItem: React.FC = () => {
           </div>
         </ButtonQuantity>
 
-        <ButtonAdd>
+        <ButtonAdd onClick={() => handleSubmit()}>
           <span>Adicionar ao carrinho</span>
           <span>{transformToRealBRL(totalCount)}</span>
         </ButtonAdd>

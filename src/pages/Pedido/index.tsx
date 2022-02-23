@@ -28,13 +28,12 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { FaRegCreditCard } from "react-icons/fa";
 import { retiradaImg, entregaImg } from "../../assets/Menu/Delivery/index";
 import { useCookies } from "react-cookie";
-import produtosArray from "./produtos.json";
 
 export const PagePedido: React.FC = () => {
-  const [produtos, setProdutos] = useState([...produtosArray.produtos]);
   const [taxa, setTaxa] = useState(0);
   const [dlvrInfo, setDlvrInfo] = useState(undefined);
-  const [cookie, setCookie, removeCookie] = useCookies();
+  const [cookie, setCookie, removeCookie] = useCookies(["Produto"]);
+  const [produtos, setProdutos] = useState([cookie.Produto]);
   const navigate = useNavigate();
 
   const locationInfo = (
@@ -103,7 +102,7 @@ export const PagePedido: React.FC = () => {
     *Endereço:* 
     _*Obs.:*_
     `
-    for (const item of cookie.produtos) {
+    for (const item of cookie.Produto) {
       texto += `
         ${item.children[0].innerHTML} - ${item.children[1].innerHTML.replace('IS', 'L').replace('SORVETES', 'SORVETE').replace('ENTREGAS', 'ENTREGA')} de ${item.children[2].innerHTML}
       `
