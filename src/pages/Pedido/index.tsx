@@ -28,13 +28,14 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { FaRegCreditCard } from "react-icons/fa";
 import { retiradaImg, entregaImg } from "../../assets/Menu/Delivery/index";
 import { useCookies } from "react-cookie";
+import InputMask from "react-input-mask";
 
 export const PagePedido: React.FC = () => {
   const [taxa, setTaxa] = useState(0);
   const [dlvrInfo, setDlvrInfo] = useState(undefined);
   const [cookie, setCookie, removeCookie] = useCookies(["Produto"]);
   const [produtos, setProdutos] = useState([cookie.Produto]);
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
 
   const locationInfo = (
     <MoreInfo>
@@ -50,8 +51,8 @@ export const PagePedido: React.FC = () => {
     <Form>
       <div className="sharedDiv">
         <div className="firstDiv">
-          <Label id="name">CEP: </Label>
-          <Input id="name" name="name" placeholder="Seu nome..." />
+          <Label id="cep">CEP: </Label>
+          <InputMask mask="99999-999" maskChar="_" />
         </div>
         <div className="secondDiv">
           <Label id="number">Numero: </Label>
@@ -183,7 +184,7 @@ export const PagePedido: React.FC = () => {
         </CardTitle>
         <CardBody>
           <Form id="myForm">
-            <Label id="nome">CEP: </Label>
+            <Label id="nome">Nome: </Label>
             <Input id="nome" name="nome" placeholder="Seu nome..." />
             <hr />
             <Label id="celular">Celular: </Label>

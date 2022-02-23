@@ -137,6 +137,12 @@ export const Form = styled.form`
         align-self: flex-start;
       }
       input {
+        border: gray solid 1px;
+        border-radius: 6px;
+        padding: 8px;
+        width: 70%;
+        margin-bottom: 15px;
+        font-size: 16px;
         align-self: center;
       }
       display: flex;
