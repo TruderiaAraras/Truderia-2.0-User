@@ -33,9 +33,10 @@ import InputMask from "react-input-mask";
 export const PagePedido: React.FC = () => {
   const [taxa, setTaxa] = useState(0);
   const [dlvrInfo, setDlvrInfo] = useState(undefined);
-  const [cookie, setCookie, removeCookie] = useCookies(["Produto"]);
-  const [produtos, setProdutos] = useState([cookie.Produto]);
-  const navigate = useNavigate();  
+  const [cookie, setCookie, removeCookie] = useCookies();
+  const [produtos, setProdutos] = useState(cookie.Produto);
+  const navigate = useNavigate();
+  console.log(cookie)
 
   const locationInfo = (
     <MoreInfo>
@@ -73,7 +74,7 @@ export const PagePedido: React.FC = () => {
 
   function deleteProd(indexProduto: number) {
     const newProdutos = produtos.filter(
-      (produto, index) => index !== indexProduto
+      (produto: any, index: any) => index !== indexProduto
     );
     setProdutos(newProdutos);
   }
@@ -88,7 +89,7 @@ export const PagePedido: React.FC = () => {
 
   function subTotal() {
     let valorTotal = 0;
-    produtos.map((prod) => {
+    produtos.map((prod: any) => {
       valorTotal += prod.preco * prod.quantidade;
       return 0; // Para remover warning do React
     });
@@ -149,8 +150,8 @@ export const PagePedido: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {produtos.map((produto, index) => (
-                <tr key={produto.id}>
+              {produtos.map((produto: any, index: any) => (
+                <tr key={index}>
                   <td>{produto.quantidade.toString() + "x"}</td>
                   <td>{produto.categoria}</td>
                   <td>{produto.sabor}</td>

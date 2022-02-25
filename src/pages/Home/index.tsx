@@ -47,11 +47,7 @@ export const Home: React.FC = () => {
                 key={category}
                 title={categoryName}
                 item={categoryItems}
-                onClick={() => {
-                  const produto = { categoria: categoryName };
-                  setCookie("Produto", produto, { secure: true, sameSite: "none" });
-                  openModal();
-                }}
+                onClick={() => openModal()}
               />
             )
           )}

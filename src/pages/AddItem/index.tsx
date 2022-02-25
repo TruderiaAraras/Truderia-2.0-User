@@ -51,11 +51,11 @@ export const AddItem: React.FC = () => {
 
   function handleSubmit() {
     const produto = [{
-      categoria: cookie.Produto.categoria,
-      descricao: cookie.Produto.descricao,           
-      preco: cookie.Produto.preco,
-      sabor: cookie.Produto.sabor,
-      quantidade: totalCount
+      categoria: cookie.Produto[0].categoria,
+      descricao: cookie.Produto[0].descricao,           
+      preco: cookie.Produto[0].preco,
+      sabor: cookie.Produto[0].sabor,
+      quantidade: 1
     }];
     setCookie("Produto", produto, { secure: true, sameSite: "none" });
     navigate("/pedido");
@@ -72,10 +72,10 @@ export const AddItem: React.FC = () => {
 
       <InfoWrapper>
         <Title>
-          { cookie !== undefined ? cookie.Produto.sabor : null }
+          { cookie !== undefined ? cookie.Produto[0].sabor : null }
         </Title>
         <Description>
-          { cookie !== undefined ? cookie.Produto.descricao : null }          
+          { cookie !== undefined ? cookie.Produto[0].descricao : null }          
         </Description>
       </InfoWrapper>
 

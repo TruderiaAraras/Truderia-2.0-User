@@ -9,8 +9,6 @@ import {
 
 import { CardProduct } from "../../components/CardProduct";
 
-import { useCookies } from "react-cookie";
-
 import "./style.css";
 
 interface Props {
@@ -20,8 +18,6 @@ interface Props {
 }
 
 export const NewAccordion: React.FC<Props> = ({ title, item, onClick }) => {
-  const [cookie, setCookie, removeCookie] = useCookies();
-
   return (
     <Accordion>
       <AccordionItem>
@@ -31,17 +27,7 @@ export const NewAccordion: React.FC<Props> = ({ title, item, onClick }) => {
 
         <AccordionItemPanel>
           {item.map((iten: any, index: number) => (
-            <CardProduct key={index} data={iten} onClick={() => {
-              onClick();
-              const product = [{
-                categoria: cookie.Produto.categoria,
-                sabor: iten.flavour,
-                descricao: iten.description,                
-                fullPrice: iten.price,
-                miniPrice: iten.miniPrice
-              }];
-              setCookie("Produto", product, { secure: true, sameSite: "none" });
-            }} />
+            <CardProduct key={index} data={iten} categoryName={title} onClick={() => onClick()} />
           ))}
         </AccordionItemPanel>
       </AccordionItem>

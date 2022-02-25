@@ -77,7 +77,7 @@ export const Title = styled.h3`
   font-size: 16px;
 `;
 
-export const Buttons = styled.button`
+export const Buttons = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;

@@ -25,7 +25,7 @@ interface Props {
 export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
   const [cookie, setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
-  
+
   return (
     <Modal
       isOpen={isOpen}
@@ -97,22 +97,23 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
 
             <Buttons>
               <Button onClick={() => {
-                const produto = {
-                  categoria: cookie.Produto.categoria,
-                  sabor: cookie.Produto.sabor,
-                  descricao: cookie.Produto.descricao,                
-                  preco: cookie.Produto.fullPrice
-                };
+                const produto = [{
+                  categoria: cookie.Produto[0].categoria,
+                  sabor: cookie.Produto[0].sabor,
+                  descricao: cookie.Produto[0].descricao,                 
+                  preco: cookie.Produto[0].fullPrice
+                }]
+
                 setCookie("Produto", produto,{ secure: true, sameSite: "none" });
                 navigate("/addItem")
               }}>Normal</Button>
               <Button onClick={() => {
-                const produto = {
-                  categoria: cookie.Produto.categoria,
-                  sabor: cookie.Produto.sabor,
-                  descricao: cookie.Produto.descricao,                 
-                  preco: cookie.Produto.miniPrice
-                };
+                const produto = [{
+                  categoria: cookie.Produto[0].categoria,
+                  sabor: cookie.Produto[0].sabor,
+                  descricao: cookie.Produto[0].descricao,                 
+                  preco: cookie.Produto[0].miniPrice
+                }];
                 setCookie("Produto", produto,{ secure: true, sameSite: "none" });
                 navigate("/addItem");
               }}>Mini</Button>
