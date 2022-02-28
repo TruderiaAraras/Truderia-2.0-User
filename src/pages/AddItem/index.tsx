@@ -27,7 +27,7 @@ import {
 export const AddItem: React.FC = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [quantityProduct, setQuantityProduct] = useState(0);
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState([]);
   const [cookie, setCookie, removeCookie] = useCookies();
 
   const navigate = useNavigate();
@@ -65,9 +65,9 @@ export const AddItem: React.FC = () => {
   }
 
   useEffect(() => {
-    const newProduct = menuView.filter(item => item.name === cookie.Produto[0].categoria)
-    setProduct(newProduct)
-    console.log(product)
+    const newProduct = menuView.filter(item => item.name === cookie.Produto[0].categoria);
+    product.push(newProduct[0]);
+    setProduct(product);
   },[]);
 
   return (
