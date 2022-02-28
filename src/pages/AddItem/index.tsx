@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
+import { menuView } from '../../database/data';
 import { InputOptions } from "../../components/InputOptions";
+
 import {
   Container,
   ButtonClose,
@@ -19,15 +24,13 @@ import {
   ButtonAdd,
 } from "./style";
 
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-
 export const AddItem: React.FC = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [quantityProduct, setQuantityProduct] = useState(0);
+  const [product, setProduct] = useState();
   const [cookie, setCookie, removeCookie] = useCookies();
+
   const navigate = useNavigate();
-  console.log(cookie)
 
   function handleClose() {
     navigate("/home");
@@ -61,6 +64,12 @@ export const AddItem: React.FC = () => {
     navigate("/pedido");
   }
 
+  useEffect(() => {
+    const newProduct = menuView.filter(item => item.name === cookie.Produto[0].categoria)
+    setProduct(newProduct)
+    console.log(product)
+  },[]);
+
   return (
     <Container>
       <Header>
@@ -82,9 +91,13 @@ export const AddItem: React.FC = () => {
       <OptionInput>
         <TitleItem>Sorvetes</TitleItem>
         <WrapperOption>
-          {[1, 2, 3, 4, 5, 6, 7].map((item) => (
-            <InputOptions key={item} setTotalCount={setTotalCount} />
-          ))}
+          {/* {
+            //@ts-ignore
+            product.additionalItem.map((itemMap, index) => (
+              
+              <InputOptions key={index} setTotalCount={setTotalCount} />
+            ))
+          } */}
         </WrapperOption>
       </OptionInput>
 

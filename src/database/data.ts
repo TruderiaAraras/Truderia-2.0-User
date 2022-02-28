@@ -1,4 +1,145 @@
 // MenuView - Cardapio
+
+const additional = [
+  {
+    flavour: "MORANGO",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/morango.jpg",
+    price: 4,
+    miniPrice: 2,
+  },
+  {
+    flavour: "GRANULADO",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/granulado2.webp",
+    price: 1,
+    miniPrice: 0.5,
+  },
+  {
+    flavour: "CONFETE",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/confete.jpg",
+    price: 2,
+    miniPrice: 1,
+  },
+  {
+    flavour: "COCO RALADO",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/cocoRalado.jpg",
+    price: 2,
+    miniPrice: 1,
+  },
+  {
+    flavour: "OVOMALTINE CROCANTE",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/ovomaltine.jpg",
+    price: 2,
+    miniPrice: 1,
+  },
+  {
+    flavour: "NEGRESCO MOIDO",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/Negresco.webp",
+    price: 2,
+    miniPrice: 1,
+  },
+  {
+    flavour: "AMENDOIM",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/amendoim.jpg",
+    price: 2,
+    miniPrice: 1,
+  },
+  {
+    flavour: "NOZES",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/nozes.jpg",
+    price: 3,
+    miniPrice: 1.5,
+  },
+  {
+    flavour: "KIT KAT PICADO",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/kitKat2.jpg",
+    price: 3,
+    miniPrice: 1.5,
+  },
+  {
+    flavour: "SONHO DE VALSA PICADO",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/sonhoDeValsa.jpg",
+    price: 3,
+  },
+  {
+    flavour: "RECHEIO EXTRA",
+    span: "",
+    description: "",
+    image: "./Menu/Adicionais/dobroRecheio.jpg",
+    price: 4,
+    miniPrice: 3,
+  },
+];
+
+const iceCream = [
+  {
+    flavour: "CREME",
+    span: "",
+    description: "O clássico sorvete de creme que combina com tudo.",
+    image: "./Menu/Sorvetes/Creme.webp",
+    price: 4,
+  },
+  {
+    flavour: "NINHO TRUFADO",
+    span: "",
+    description:
+      "O nosso sabor mais pedido, a dupla perfeita, leite Ninho e chocolate.",
+    image: "./Menu/Sorvetes/NinhoTrufado.webp",
+    price: 4,
+  },
+  {
+    flavour: "IOGURTE COM FRUTAS VERMELHAS",
+    span: "",
+    description:
+      "A leveza do iogurte com um mix das frutas amora, framboesa, cereja e morango.",
+    image: "./Menu/Sorvetes/IogurteFrutasVermelhas.webp",
+    price: 4,
+  },
+  {
+    flavour: "CAFÉ MOCHA",
+    span: "",
+    description:
+      "O sorvete ideal para quem adora café com um toque especial de chocolate.",
+    image: "./Menu/Sorvetes/CafeMocha.webp",
+    price: 4,
+  },
+  {
+    flavour: "BEM CASADO",
+    span: "",
+    description:
+      "A união que deu certo, sorvete com pedaços de biscoito e doce de leite.",
+    image: "./Menu/Sorvetes/BemCasado.webp",
+    price: 4,
+  },
+  {
+    flavour: "SENSAÇÃO",
+    span: "",
+    description:
+      "A deliciosa combinação do sorvete de morango com pedaços de chocolate.",
+    image: "./Menu/Sorvetes/Sensacao.webp",
+    price: 4,
+  },
+];
+
 const trudel = [
   {
     flavour: "TRADICIONAL",
@@ -91,96 +232,6 @@ const trudel = [
   },
 ];
 
-const additional = [
-  {
-    flavour: "MORANGO",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/morango.jpg",
-    price: 4,
-    miniPrice: 2,
-  },
-  {
-    flavour: "GRANULADO",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/granulado2.webp",
-    price: 1,
-    miniPrice: 0.5,
-  },
-  {
-    flavour: "CONFETE",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/confete.jpg",
-    price: 2,
-    miniPrice: 1,
-  },
-  {
-    flavour: "COCO RALADO",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/cocoRalado.jpg",
-    price: 2,
-    miniPrice: 1,
-  },
-  {
-    flavour: "OVOMALTINE CROCANTE",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/ovomaltine.jpg",
-    price: 2,
-    miniPrice: 1,
-  },
-  {
-    flavour: "NEGRESCO MOIDO",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/Negresco.webp",
-    price: 2,
-    miniPrice: 1,
-  },
-  {
-    flavour: "AMENDOIM",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/amendoim.jpg",
-    price: 2,
-    miniPrice: 1,
-  },
-  {
-    flavour: "NOZES",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/nozes.jpg",
-    price: 3,
-    miniPrice: 1.5,
-  },
-  {
-    flavour: "KIT KAT PICADO",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/kitKat2.jpg",
-    price: 3,
-    miniPrice: 1.5,
-  },
-  {
-    flavour: "SONHO DE VALSA PICADO",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/sonhoDeValsa.jpg",
-    price: 3,
-  },
-  {
-    flavour: "RECHEIO EXTRA",
-    span: "",
-    description: "",
-    image: "./Menu/Adicionais/dobroRecheio.jpg",
-    price: 4,
-    miniPrice: 3,
-  },
-];
-
 const savoryTrudel = [
   {
     flavour: "TRADICIONAL",
@@ -263,55 +314,6 @@ const savoryAdditional = [
   },
 ];
 
-const iceCream = [
-  {
-    flavour: "CREME",
-    span: "",
-    description: "O clássico sorvete de creme que combina com tudo.",
-    image: "./Menu/Sorvetes/Creme.webp",
-    price: 4,
-  },
-  {
-    flavour: "NINHO TRUFADO",
-    span: "",
-    description:
-      "O nosso sabor mais pedido, a dupla perfeita, leite Ninho e chocolate.",
-    image: "./Menu/Sorvetes/NinhoTrufado.webp",
-    price: 4,
-  },
-  {
-    flavour: "IOGURTE COM FRUTAS VERMELHAS",
-    span: "",
-    description:
-      "A leveza do iogurte com um mix das frutas amora, framboesa, cereja e morango.",
-    image: "./Menu/Sorvetes/IogurteFrutasVermelhas.webp",
-    price: 4,
-  },
-  {
-    flavour: "CAFÉ MOCHA",
-    span: "",
-    description:
-      "O sorvete ideal para quem adora café com um toque especial de chocolate.",
-    image: "./Menu/Sorvetes/CafeMocha.webp",
-    price: 4,
-  },
-  {
-    flavour: "BEM CASADO",
-    span: "",
-    description:
-      "A união que deu certo, sorvete com pedaços de biscoito e doce de leite.",
-    image: "./Menu/Sorvetes/BemCasado.webp",
-    price: 4,
-  },
-  {
-    flavour: "SENSAÇÃO",
-    span: "",
-    description:
-      "A deliciosa combinação do sorvete de morango com pedaços de chocolate.",
-    image: "./Menu/Sorvetes/Sensacao.webp",
-    price: 4,
-  },
-];
 
 const trudelRings = [
   {
@@ -569,6 +571,8 @@ export const menuView = [
     name: "TRUDELS",
     category: "trudel",
     items: trudel,
+    additionalItem: additional,
+    additionalItem2: iceCream,
   },
   {
     name: "TRUDELS SALGADOS",
