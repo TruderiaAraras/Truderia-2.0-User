@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import { menuView } from '../../database/data';
+import { menuView } from "../../database/data";
 import { InputOptions } from "../../components/InputOptions";
 
 import {
@@ -53,23 +53,29 @@ export const AddItem: React.FC = () => {
   }
 
   function handleSubmit() {
-    const produto = [{
-      categoria: cookie.Produto[0].categoria,
-      descricao: cookie.Produto[0].descricao,           
-      preco: cookie.Produto[0].preco,
-      sabor: cookie.Produto[0].sabor,
-      quantidade: 1
-    }];
+    const produto = [
+      {
+        categoria: cookie.Produto[0].categoria,
+        descricao: cookie.Produto[0].descricao,
+        preco: cookie.Produto[0].preco,
+        sabor: cookie.Produto[0].sabor,
+        quantidade: 1,
+      },
+    ];
     setCookie("Produto", produto, { secure: true, sameSite: "none" });
     navigate("/pedido");
   }
 
-  useEffect(() => {
-    const newProduct = menuView.filter(item => item.name === cookie.Produto[0].categoria);
-    product.push(newProduct[0]);
-    setProduct(product);
-    console.log(product)
-  },[]);
+  function iceCreams() {
+    const newProduct = menuView.filter(
+      (item) => item.name === cookie.Produto[0].categoria
+    );
+
+    //@ts-ignore
+    return newProduct[0].additionalItem2.map((itemMap: any, index: number) => (
+      <InputOptions key={index} setTotalCount={setTotalCount} />
+    ))
+  }
 
   return (
     <Container>
@@ -81,22 +87,16 @@ export const AddItem: React.FC = () => {
       </Header>
 
       <InfoWrapper>
-        <Title>
-          { cookie !== undefined ? cookie.Produto[0].sabor : null }
-        </Title>
+        <Title>{cookie !== undefined ? cookie.Produto[0].sabor : null}</Title>
         <Description>
-          { cookie !== undefined ? cookie.Produto[0].descricao : null }          
+          {cookie !== undefined ? cookie.Produto[0].descricao : null}
         </Description>
       </InfoWrapper>
 
       <OptionInput>
         <TitleItem>Sorvetes</TitleItem>
         <WrapperOption>
-          {
-            product[0].additionalItem.map((itemMap: any, index: number) => (              
-              <InputOptions key={index} setTotalCount={setTotalCount} />
-            ))
-          }
+          {iceCreams()}
         </WrapperOption>
       </OptionInput>
 
