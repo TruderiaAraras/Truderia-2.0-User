@@ -1,6 +1,5 @@
 import React from "react";
 import { useCookies } from "react-cookie";
-import { createGzip } from "zlib";
 
 import {
   Container,
@@ -35,7 +34,7 @@ interface Props {
 
 export const CardProduct: React.FC<Props> = ({ categoryName, data, onClick }) => {
   const [cookie, setCookie, removeCookie] = useCookies();
-
+  
   return (
     <>
       <Container>
@@ -63,6 +62,7 @@ export const CardProduct: React.FC<Props> = ({ categoryName, data, onClick }) =>
               const produto = [{
                 categoria: categoryName,
                 sabor: data?.flavour,
+                imagem: data?.image,
                 descricao: data?.description,
                 miniPrice: data?.miniPrice,
                 fullPrice: data?.price

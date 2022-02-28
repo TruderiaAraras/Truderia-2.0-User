@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { menuView } from "../../database/data";
 import { NewAccordion } from "../../components/Accordion";
@@ -32,6 +32,10 @@ export const Home: React.FC = () => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    console.log(cookie)
+  },[])
 
   return (
     <>

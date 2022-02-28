@@ -100,6 +100,7 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
                 const produto = [{
                   categoria: cookie.Produto[0].categoria,
                   sabor: cookie.Produto[0].sabor,
+                  imagem: cookie.Produto[0].imagem,
                   descricao: cookie.Produto[0].descricao,                 
                   preco: cookie.Produto[0].fullPrice
                 }]
@@ -111,6 +112,7 @@ export const NewModal: React.FC<Props> = ({ isOpen, type, onRequestClose }) => {
                 const produto = [{
                   categoria: cookie.Produto[0].categoria,
                   sabor: cookie.Produto[0].sabor,
+                  imagem: cookie.Produto[0].imagem,
                   descricao: cookie.Produto[0].descricao,                 
                   preco: cookie.Produto[0].miniPrice
                 }];

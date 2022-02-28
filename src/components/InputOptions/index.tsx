@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+
+import { transformToRealBRL } from "../../utils/transformToRealBRL";
 
 import {
   Container,
@@ -10,53 +12,54 @@ import {
   Price,
 } from "./style";
 
-interface Props {
-  setTotalCount: (state: any) => void;
+interface DataProps {
+  flavour: string;
+  span: string;
+  description?: string;
+  image: string;
+  price: number;
 }
 
-export const InputOptions: React.FC<Props> = ({ setTotalCount }) => {
+interface Props {
+  data: DataProps;
+  setTotalAddItem: (state: any) => void;
+}
+
+export const InputOptions: React.FC<Props> = ({ setTotalAddItem, data }) => {
+  let quantity = 0;
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    setTotalCount((state: any) => state + count * 500);
-  }, [count]);
-
-  function handleCount(value: string) {
-    if (value === "+") {
+  const handleCount = useCallback((value: number) => {
+    if (value === +1) {
+      quantity++;
       setCount((state) => state + 1);
-      setTotalCount((state: any) => state + count * 500);
+      setTotalAddItem((state: number) => state + quantity * data.price);
     } else {
       if (count <= 0) return;
+      quantity--;
       setCount((state) => state - 1);
-      setTotalCount((state: any) => state + count * 500);
+      setTotalAddItem((state: number) => state + quantity * data.price);
     }
-  }
-
-  function transformToRealBRL(value: number) {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(value);
-  }
+  },[count, quantity]) 
 
   return (
     <Container>
       <Quantity>
-        <IconSub onClick={() => handleCount("-")} />
+        <IconSub onClick={() => handleCount(-1)} />
         <span>{count}</span>
-        <IconAdd onClick={() => handleCount("+")} />
+        <IconAdd onClick={() => handleCount(+1)} />
       </Quantity>
 
       <PhotoOption>
-        <img src="https://revistacontinente.com.br/image/view/news/image/1218" alt="" />
+        <img src={data?.image} alt={data?.flavour} />
       </PhotoOption>
 
       <Name>
-        <p>Nome</p>
+        <p>{data?.flavour}</p>
       </Name>
 
       <Price>
-        <p>+ {transformToRealBRL(500)}</p>
+        <p>+ {transformToRealBRL(data?.price)}</p>
       </Price>
     </Container>
   );

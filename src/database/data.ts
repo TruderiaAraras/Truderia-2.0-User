@@ -140,6 +140,78 @@ const iceCream = [
   },
 ];
 
+const savoryAdditional = [
+  {
+    flavour: "ALHO FRITO",
+    span: "",
+    description: "",
+    image: "./Menu/AdicionaisSalgados/AlhoFrito.webp",
+    price: 1,
+  },
+  {
+    flavour: "MILHO",
+    span: "",
+    description: "",
+    image: "./Menu/AdicionaisSalgados/Milho.webp",
+    price: 1,
+  },
+  {
+    flavour: "BATATA PALHA",
+    span: "",
+    description: "",
+    image: "./Menu/AdicionaisSalgados/BatataPalha.webp",
+    price: 1.5,
+  },
+  {
+    flavour: "PARMESÃO RALADO",
+    span: "",
+    description: "",
+    image: "./Menu/AdicionaisSalgados/ParmesaoRalado.webp",
+    price: 2,
+  },
+];
+
+const drinks = [
+  {
+    flavour: "ÁGUA",
+    span: "500ml",
+    description: "Água natural.",
+    image: "./Menu/Bebidas/Agua.jpg",
+    price: 2,
+  },
+  {
+    flavour: "ÁGUA COM GÁS",
+    span: "510ml",
+    description: "Água gaseificada",
+    image: "./Menu/Bebidas/AguaComGas.jpg",
+    price: 3,
+  },
+  {
+    flavour: "SODA ITALIANA CRANBERRY",
+    span: "500ml",
+    description:
+      "Frescor e um toque doce suave definem essa bebida! Feita com água com gás e xarope de frutas importado e gelo.",
+    image: "./Menu/Bebidas/Cranberry.webp",
+    price: 12,
+  },
+  {
+    flavour: "SODA ITALIANA MAÇÃ VERDE",
+    span: "500ml",
+    description:
+      "Sabor excepcional, o preferido daqueles que tem o paladar mais doce.  Feita com água com gás e xarope de frutas importado e gelo.",
+    image: "./Menu/Bebidas/MacaVerde.webp",
+    price: 12,
+  },
+  {
+    flavour: "SODA ITALIANA LIMÃO SICILIANO",
+    span: "500ml",
+    description:
+      "Refrescante e cítrico, uma verdadeira limonada premium. Feita com água com gás e xarope de frutas importado e gelo.",
+    image: "./Menu/Bebidas/LimaoSiciliano.webp",
+    price: 12,
+  },
+];
+
 const trudel = [
   {
     flavour: "TRADICIONAL",
@@ -283,38 +355,6 @@ const savoryTrudel = [
   },
 ];
 
-const savoryAdditional = [
-  {
-    flavour: "ALHO FRITO",
-    span: "",
-    description: "",
-    image: "./Menu/AdicionaisSalgados/AlhoFrito.webp",
-    price: 1,
-  },
-  {
-    flavour: "MILHO",
-    span: "",
-    description: "",
-    image: "./Menu/AdicionaisSalgados/Milho.webp",
-    price: 1,
-  },
-  {
-    flavour: "BATATA PALHA",
-    span: "",
-    description: "",
-    image: "./Menu/AdicionaisSalgados/BatataPalha.webp",
-    price: 1.5,
-  },
-  {
-    flavour: "PARMESÃO RALADO",
-    span: "",
-    description: "",
-    image: "./Menu/AdicionaisSalgados/ParmesaoRalado.webp",
-    price: 2,
-  },
-];
-
-
 const trudelRings = [
   {
     flavour: "RINGS FIVE",
@@ -382,47 +422,6 @@ const stuffingPots = {
     },
   ],
 };
-
-const drinks = [
-  {
-    flavour: "ÁGUA",
-    span: "500ml",
-    description: "Água natural.",
-    image: "./Menu/Bebidas/Agua.jpg",
-    price: 2,
-  },
-  {
-    flavour: "ÁGUA COM GÁS",
-    span: "510ml",
-    description: "Água gaseificada",
-    image: "./Menu/Bebidas/AguaComGas.jpg",
-    price: 3,
-  },
-  {
-    flavour: "SODA ITALIANA CRANBERRY",
-    span: "500ml",
-    description:
-      "Frescor e um toque doce suave definem essa bebida! Feita com água com gás e xarope de frutas importado e gelo.",
-    image: "./Menu/Bebidas/Cranberry.webp",
-    price: 12,
-  },
-  {
-    flavour: "SODA ITALIANA MAÇÃ VERDE",
-    span: "500ml",
-    description:
-      "Sabor excepcional, o preferido daqueles que tem o paladar mais doce.  Feita com água com gás e xarope de frutas importado e gelo.",
-    image: "./Menu/Bebidas/MacaVerde.webp",
-    price: 12,
-  },
-  {
-    flavour: "SODA ITALIANA LIMÃO SICILIANO",
-    span: "500ml",
-    description:
-      "Refrescante e cítrico, uma verdadeira limonada premium. Feita com água com gás e xarope de frutas importado e gelo.",
-    image: "./Menu/Bebidas/LimaoSiciliano.webp",
-    price: 12,
-  },
-];
 
 const miniTrudel = {
   name: "MINI-TRUDELS",
@@ -561,33 +560,32 @@ const miniChristmas = {
 };
 
 export const menuView = [
-  christmasTrudel,
-  // {
-  //   name: "TRUDEL DE NATAL",
-  //   category: "trudel",
-  //   items: christmasTrudel,
-  // },
   {
     name: "TRUDELS",
     category: "trudel",
     items: trudel,
-    additionalItem: additional,
-    additionalItem2: iceCream,
+    iceCreamItem: iceCream,
+    drinksItem: drinks,
   },
   {
     name: "TRUDELS SALGADOS",
     category: "savoryTrudel",
     items: savoryTrudel,
+    drinksItem: drinks,
   },
   {
     name: "TRUDEL RINGS",
     category: "rings",
     items: trudelRings,
+    stuffingPotsItem: stuffingPots,
+    iceCreamItem: iceCream,
+    drinksItem: drinks,
   },
   {
     name: "SORVETES",
     category: "icecream",
     items: iceCream,
+    drinksItem: drinks,
   },
   {
     name: "ADICIONAIS",
