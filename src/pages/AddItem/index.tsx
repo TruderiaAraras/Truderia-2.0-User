@@ -68,6 +68,7 @@ export const AddItem: React.FC = () => {
     const newProduct = menuView.filter(item => item.name === cookie.Produto[0].categoria);
     product.push(newProduct[0]);
     setProduct(product);
+    console.log(product)
   },[]);
 
   return (
@@ -91,13 +92,11 @@ export const AddItem: React.FC = () => {
       <OptionInput>
         <TitleItem>Sorvetes</TitleItem>
         <WrapperOption>
-          {/* {
-            //@ts-ignore
-            product.additionalItem.map((itemMap, index) => (
-              
+          {
+            product[0].additionalItem.map((itemMap: any, index: number) => (              
               <InputOptions key={index} setTotalCount={setTotalCount} />
             ))
-          } */}
+          }
         </WrapperOption>
       </OptionInput>
 
